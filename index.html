@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Hanatécia Contabilidade | Assessoria Tributária de Excelência</title>
+    <meta name="description" content="Hanatécia Contabilidade e Assessoria Tributária: soluções contábeis completas com profissionais experientes e tecnologia moderna. Abertura de empresa, declaração de imposto, auditoria fiscal e consultoria especializada.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo-text, .nav-links a, .hero-title, .sobre-titulo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        :root {
+            --vinho: #6a1b2a;
+            --vinho-escuro: #4e1320;
+            --vinho-claro: #8e2a3b;
+            --vinho-suave: #fdf5f6;
+            --vinho-gradiente: linear-gradient(135deg, #6a1b2a 0%, #8e2a3b 100%);
+            --branco: #ffffff;
+            --cinza-claro: #faf9fc;
+            --cinza-borda: #ece8ea;
+            --cinza-texto: #4a4a4a;
+            --shadow-sm: 0 10px 30px -12px rgba(106, 27, 42, 0.12);
+            --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* HEADER */
+        .header {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--cinza-borda);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--vinho);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: #6a6a6a;
+            letter-spacing: 0.6px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 42px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c2c2c;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--vinho);
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--vinho);
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(125deg, #fffef9 0%, var(--vinho-suave) 100%);
+            padding: 80px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(106,27,42,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            background: var(--vinho);
+            color: var(--branco);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            color: #1f1f1f;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: var(--vinho);
+            position: relative;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--cinza-texto);
+            max-width: 520px;
+            margin-bottom: 32px;
+        }
+
+        .hero-btn {
+            background: var(--vinho-gradiente);
+            color: var(--branco);
+            border: none;
+            padding: 14px 34px;
+            border-radius: 44px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 14px rgba(106, 27, 42, 0.25);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(106, 27, 42, 0.3);
+        }
+
+        .hero-contact-card {
+            flex: 0.9;
+            background: var(--branco);
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--cinza-borda);
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-contact-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 22px;
+            color: var(--vinho);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .contact-item i {
+            width: 44px;
+            height: 44px;
+            background: var(--vinho-suave);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vinho);
+            font-size: 1.2rem;
+        }
+
+        /* SOBRE SECTION */
+        .sobre {
+            padding: 90px 0;
+            background: var(--branco);
+        }
+
+        .sobre-grid {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sobre-imagem {
+            flex: 1;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            min-height: 380px;
+            background: #f0ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sobre-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .sobre-imagem:hover img {
+            transform: scale(1.02);
+        }
+
+        .sobre-texto {
+            flex: 1;
+        }
+
+        .sobre-texto h2 {
+            font-size: 2.4rem;
+            color: var(--vinho);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .assinatura {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            margin-top: 24px;
+            font-size: 1.1rem;
+            color: var(--vinho);
+            border-left: 3px solid var(--vinho);
+            padding-left: 20px;
+        }
+
+        /* SERVIÇOS CARDS */
+        .services {
+            padding: 80px 0;
+            background: var(--cinza-claro);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 55px;
+        }
+
+        .section-header h2 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--vinho);
+            margin-bottom: 16px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 35px;
+        }
+
+        .service-card {
+            background: var(--branco);
+            border-radius: 28px;
+            padding: 36px 28px;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: 1px solid var(--cinza-borda);
+            box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--vinho-claro);
+            box-shadow: 0 28px 36px -16px rgba(106, 27, 42, 0.18);
+        }
+
+        .service-icon {
+            background: var(--vinho-suave);
+            width: 68px;
+            height: 68px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .service-icon i {
+            font-size: 32px;
+            color: var(--vinho);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #1e1e1e;
+        }
+
+        .service-card p {
+            color: #5a5a5a;
+            margin-bottom: 26px;
+            font-size: 0.92rem;
+        }
+
+        .card-link {
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--vinho);
+            transition: gap 0.2s;
+        }
+
+        /* LISTA SERVIÇOS */
+        .services-full {
+            background: var(--branco);
+            padding: 80px 0;
+        }
+
+        .services-full h2 {
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--vinho);
+            font-size: 2.2rem;
+        }
+
+        .services-grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 16px 28px;
+        }
+
+        .service-item-list {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--cinza-claro);
+            padding: 14px 22px;
+            border-radius: 60px;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .service-item-list:hover {
+            border-color: var(--vinho-claro);
+            background: var(--vinho-suave);
+        }
+
+        .service-item-list i {
+            color: var(--vinho);
+            font-size: 1.1rem;
+        }
+
+        /* ÁREA DE ATUAÇÃO */
+        .actuation {
+            padding: 80px 0;
+            background: var(--vinho-suave);
+        }
+
+        .actuation-grid {
+            display: flex;
+            gap: 55px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .actuation-text {
+            flex: 1;
+        }
+
+        .actuation-text h2 {
+            font-size: 2.3rem;
+            color: var(--vinho);
+            margin-bottom: 22px;
+        }
+
+        .actuation-list li {
+            margin-bottom: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* NOTÍCIAS */
+        .news {
+            background: var(--branco);
+            padding: 80px 0;
+        }
+
+        .news-card-blog {
+            background: linear-gradient(145deg, #fff, var(--vinho-suave));
+            border-radius: 40px;
+            padding: 48px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* CONTATO */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--cinza-claro);
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 55px;
+        }
+
+        .footer {
+            background: var(--vinho-escuro);
+            color: #f0d8de;
+            padding: 44px 0;
+            text-align: center;
+        }
+
+        /* WHATSAPP FLUTUANTE */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+            transition: all 0.2s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            background: #128C7E;
+            box-shadow: 0 12px 28px rgba(18, 140, 126, 0.4);
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .container {
+                padding: 0 24px;
+            }
+            .sobre-grid {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1>Hanatécia</h1>
+                <p>Contabilidade e Assessoria Tributária</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#atuacao">Atuação</a></li>
+                <li><a href="#noticias">Notícias</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">Excelência em gestão tributária</div>
+                <h1>Soluções contábeis <span>com precisão</span> e agilidade</h1>
+                <p>Oferecemos soluções contábeis completas para sua empresa, com profissionais experientes e tecnologia moderna.</p>
+                <a href="#contato" class="hero-btn">Fale com a Hanatécia <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-contact-card">
+                <h3>Atendimento direto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i> <span>(61) 99215-1553</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> <span>hanatecia@outlook.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> <span>Brasília - DF | Atendimento nacional</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <div class="container sobre-grid">
+            <div class="sobre-imagem">
+                <img src="assets/contadora-hanatecia.jpg" alt="Hanatécia Contadora" onerror="this.src='https://placehold.co/600x500/6a1b2a/white?text=Foto+Hanat%C3%A9cia'; this.style.objectFit='cover';">
+            </div>
+            <div class="sobre-texto">
+                <h2>Sobre Hanatécia</h2>
+                <p>Hanatécia é contadora com mais de 12 anos de experiência em assessoria tributária, gestão fiscal e consultoria empresarial. Formada em Ciências Contábeis e pós-graduada em Direito Tributário, ela construiu uma trajetória baseada em ética, transparência e compromisso com resultados.</p>
+                <p>Sua abordagem combina conhecimento técnico profundo com um olhar humano para cada cliente, garantindo soluções personalizadas que vão desde a abertura de empresas até a gestão contábil de cooperativas. Para Hanatécia, contabilidade não é apenas cumprir obrigações, mas gerar valor e tranquilidade para negócios.</p>
+                <div class="assinatura">“Sua confiança é o que move nosso trabalho.” — Hanatécia</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções contábeis completas para sua empresa, com profissionais experientes e tecnologia moderna.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <h3>Abertura de Empresa</h3>
+                    <p>Abrimos sua empresa em até 24 horas com toda a documentação necessária e segurança.</p>
+                    <a href="#contato" class="card-link">FALE CONOSCO <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Declaração de Imposto</h3>
+                    <p>Realize sua declaração conosco com segurança e conformidade com a legislação.</p>
+                    <a href="#contato" class="card-link">FALE CONOSCO <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Auditoria Fiscal</h3>
+                    <p>Auditoria fiscal imparcial e com segurança para sua empresa.</p>
+                    <a href="#contato" class="card-link">FALE CONOSCO <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Consultoria Contábil</h3>
+                    <p>Consultoria especializada para otimizar seus processos contábeis.</p>
+                    <a href="#contato" class="card-link">FALE CONOSCO <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-full">
+        <div class="container">
+            <h2>Serviços Contábeis</h2>
+            <div class="services-grid-list">
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Abertura de Empresa</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Declaração de Imposto</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Auditoria Fiscal</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Consultoria Contábil</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Serviço Paralegal</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>E-Social Doméstico</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Imposto de Renda Pessoa Física</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Malha Fiscal</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Notificação de Lançamento ou Intimação de Comprovação de Documentos</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Carne Leão</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Soluções Contábeis para Cooperativas de Serviços</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Gestão Contábil Especializada para Cooperativas de Trabalho</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="atuacao" class="actuation">
+        <div class="container actuation-grid">
+            <div class="actuation-text">
+                <h2>Área de Atuação</h2>
+                <p>Atendemos empresas de todos os portes, desde MEI a grandes corporações, com foco em resultados e conformidade fiscal. Nossa expertise abrange diversos setores da economia.</p>
+                <ul class="actuation-list">
+                    <li><i class="fas fa-check-circle" style="color:var(--vinho)"></i> Comércio e Serviços</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--vinho)"></i> Indústria e Logística</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--vinho)"></i> Cooperativas de Trabalho e Serviços</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--vinho)"></i> Profissionais Liberais e Autônomos</li>
+                    <li><i class="fas fa-check-circle" style="color:var(--vinho)"></i> Agronegócio e Tecnologia</li>
+                </ul>
+            </div>
+            <div style="flex:0.8; background: white; border-radius: 32px; padding: 36px; text-align:center; box-shadow: var(--shadow-sm);">
+                <i class="fas fa-chart-pie" style="font-size: 52px; color: var(--vinho); margin-bottom: 20px;"></i>
+                <h3 style="color: var(--vinho);">+12 anos de experiência</h3>
+                <p style="margin-top: 14px;">Atuação segura e estratégica em todo território nacional.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="noticias" class="news">
+        <div class="container">
+            <div class="news-card-blog">
+                <i class="fas fa-newspaper" style="font-size: 48px; color: var(--vinho); margin-bottom: 16px; display: inline-block;"></i>
+                <h2 style="font-size: 2rem; color: var(--vinho);">Notícias e Conteúdos</h2>
+                <p style="max-width: 600px; margin: 16px auto;">Acompanhe análises, atualizações fiscais e artigos do mundo contábil. Em breve, nosso blog estará repleto de materiais exclusivos.</p>
+                <a href="#" id="blogLink" class="hero-btn" style="background: var(--vinho); margin-top: 16px; display: inline-flex;">Acessar Blog (em breve) <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact-section">
+        <div class="container contact-flex">
+            <div class="contact-info" style="flex:1">
+                <h2 style="font-size: 2rem; color: var(--vinho);">Entre em Contato</h2>
+                <p style="margin: 20px 0;">Envie sua mensagem ou fale diretamente com a contadora Hanatécia. Respondemos em até 2 horas úteis.</p>
+                <div class="contact-details">
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom: 20px;"><i class="fab fa-whatsapp" style="font-size:26px; color:var(--vinho);"></i> <span>(61) 99215-1553</span></div>
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom: 20px;"><i class="fas fa-envelope" style="font-size:22px; color:var(--vinho);"></i> <span>hanatecia@outlook.com</span></div>
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom: 30px;"><i class="fas fa-clock" style="font-size:22px; color:var(--vinho);"></i> <span>Segunda a Sexta, 9h às 18h</span></div>
+                </div>
+                <a href="https://wa.me/5561992151553?text=Olá%20Hanatécia,%20gostaria%20de%20informações%20sobre%20serviços%20contábeis" target="_blank" class="hero-btn" style="background: #25D366; display: inline-flex; gap: 12px;"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+            </div>
+            <div style="flex:1; background: white; border-radius: 32px; padding: 32px; text-align: center; border: 1px solid var(--cinza-borda);">
+                <i class="fas fa-map-pin" style="font-size: 44px; color: var(--vinho); margin-bottom: 18px;"></i>
+                <h3>Atendimento</h3>
+                <p>Brasília - DF<br>Agendamento necessário</p>
+                <img src="assets/mapa-ilustrativo.png" alt="Localização" style="width:100%; max-width:200px; margin-top:20px; opacity:0.7;" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Hanatécia Contabilidade e Assessoria Tributária. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">CNPJ em fase de registro | Contadora responsável: Hanatécia</p>
+    </div>
+</footer>
+
+<a href="https://wa.me/5561992151553?text=Olá%20Hanatécia,%20gostaria%20de%20informações%20sobre%20serviços%20contábeis" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    (function() {
+        const blogBtn = document.getElementById('blogLink');
+        if (blogBtn) {
+            blogBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const noticiasSection = document.getElementById('noticias');
+                if (noticiasSection) {
+                    noticiasSection.scrollIntoView({ behavior: 'smooth' });
+                    const toast = document.createElement('div');
+                    toast.innerText = 'Blog em desenvolvimento. Em breve conteúdos exclusivos.';
+                    toast.style.position = 'fixed';
+                    toast.style.bottom = '90px';
+                    toast.style.right = '28px';
+                    toast.style.backgroundColor = 'var(--vinho)';
+                    toast.style.color = 'white';
+                    toast.style.padding = '10px 22px';
+                    toast.style.borderRadius = '40px';
+                    toast.style.fontSize = '0.8rem';
+                    toast.style.zIndex = '1000';
+                    toast.style.fontWeight = '500';
+                    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                    document.body.appendChild(toast);
+                    setTimeout(() => toast.remove(), 2800);
+                }
+            });
+        }
+        document.querySelectorAll('.nav-links a, .hero-btn, .card-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#') && href !== '#') {
+                    const targetId = href.substring(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    })();
+</script>
+</body>
+</html>
