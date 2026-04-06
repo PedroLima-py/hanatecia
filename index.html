@@ -49,7 +49,6 @@
             --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
         }
 
-        /* HEADER */
         .header {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(8px);
@@ -119,7 +118,6 @@
             color: var(--vinho);
         }
 
-        /* HERO */
         .hero {
             background: linear-gradient(125deg, #fffef9 0%, var(--vinho-suave) 100%);
             padding: 80px 0 70px;
@@ -197,6 +195,7 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 6px 14px rgba(106, 27, 42, 0.25);
+            text-decoration: none;
         }
 
         .hero-btn:hover {
@@ -239,7 +238,6 @@
             font-size: 1.2rem;
         }
 
-        /* SOBRE SECTION */
         .sobre {
             padding: 90px 0;
             background: var(--branco);
@@ -297,7 +295,6 @@
             padding-left: 20px;
         }
 
-        /* SERVIÇOS CARDS */
         .services {
             padding: 80px 0;
             background: var(--cinza-claro);
@@ -376,7 +373,6 @@
             transition: gap 0.2s;
         }
 
-        /* LISTA SERVIÇOS */
         .services-full {
             background: var(--branco);
             padding: 80px 0;
@@ -416,7 +412,6 @@
             font-size: 1.1rem;
         }
 
-        /* ÁREA DE ATUAÇÃO */
         .actuation {
             padding: 80px 0;
             background: var(--vinho-suave);
@@ -446,7 +441,6 @@
             align-items: center;
         }
 
-        /* NOTÍCIAS */
         .news {
             background: var(--branco);
             padding: 80px 0;
@@ -460,7 +454,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* CONTATO */
         .contact-section {
             padding: 80px 0;
             background: var(--cinza-claro);
@@ -479,7 +472,6 @@
             text-align: center;
         }
 
-        /* WHATSAPP FLUTUANTE */
         .whatsapp-float {
             position: fixed;
             bottom: 28px;
@@ -502,7 +494,6 @@
         .whatsapp-float:hover {
             transform: scale(1.08);
             background: #128C7E;
-            box-shadow: 0 12px 28px rgba(18, 140, 126, 0.4);
         }
 
         @media (max-width: 900px) {
@@ -545,7 +536,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#atuacao">Atuação</a></li>
-                <li><a href="#noticias">Notícias</a></li>
+                <li><a href="blog.html">Notícias</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </div>
@@ -558,7 +549,7 @@
             <div class="hero-content">
                 <div class="hero-badge">Excelência em gestão tributária</div>
                 <h1>Soluções contábeis <span>com precisão</span> e agilidade</h1>
-                <p>Oferecemos soluções contábeis completas para sua empresa, com profissionais experientes e tecnologia moderna.</p>
+                <p>Oferecemos soluções contábeis completas para sua empresa, com profissionais experientes e tecnologia moderna. Acompanhe nosso blog para ficar por dentro das principais novidades fiscais.</p>
                 <a href="#contato" class="hero-btn">Fale com a Hanatécia <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="hero-contact-card">
@@ -671,8 +662,8 @@
             <div class="news-card-blog">
                 <i class="fas fa-newspaper" style="font-size: 48px; color: var(--vinho); margin-bottom: 16px; display: inline-block;"></i>
                 <h2 style="font-size: 2rem; color: var(--vinho);">Notícias e Conteúdos</h2>
-                <p style="max-width: 600px; margin: 16px auto;">Acompanhe análises, atualizações fiscais e artigos do mundo contábil. Em breve, nosso blog estará repleto de materiais exclusivos.</p>
-                <a href="#" id="blogLink" class="hero-btn" style="background: var(--vinho); margin-top: 16px; display: inline-flex;">Acessar Blog (em breve) <i class="fas fa-arrow-right"></i></a>
+                <p style="max-width: 600px; margin: 16px auto;">Acompanhe análises, atualizações fiscais e artigos do mundo contábil. Acesse nosso blog e fique por dentro das principais novidades do setor.</p>
+                <a href="blog.html" class="hero-btn" style="background: var(--vinho); margin-top: 16px; display: inline-flex;">Acessar Blog <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -711,46 +702,19 @@
 </a>
 
 <script>
-    (function() {
-        const blogBtn = document.getElementById('blogLink');
-        if (blogBtn) {
-            blogBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const noticiasSection = document.getElementById('noticias');
-                if (noticiasSection) {
-                    noticiasSection.scrollIntoView({ behavior: 'smooth' });
-                    const toast = document.createElement('div');
-                    toast.innerText = 'Blog em desenvolvimento. Em breve conteúdos exclusivos.';
-                    toast.style.position = 'fixed';
-                    toast.style.bottom = '90px';
-                    toast.style.right = '28px';
-                    toast.style.backgroundColor = 'var(--vinho)';
-                    toast.style.color = 'white';
-                    toast.style.padding = '10px 22px';
-                    toast.style.borderRadius = '40px';
-                    toast.style.fontSize = '0.8rem';
-                    toast.style.zIndex = '1000';
-                    toast.style.fontWeight = '500';
-                    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-                    document.body.appendChild(toast);
-                    setTimeout(() => toast.remove(), 2800);
+    document.querySelectorAll('.nav-links a, .hero-btn, .card-link').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#') && href !== '#') {
+                const targetId = href.substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
-            });
-        }
-        document.querySelectorAll('.nav-links a, .hero-btn, .card-link').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href.startsWith('#') && href !== '#') {
-                    const targetId = href.substring(1);
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
+            }
         });
-    })();
+    });
 </script>
 </body>
 </html>

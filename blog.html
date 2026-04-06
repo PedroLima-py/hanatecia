@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Blog | Hanatécia Contabilidade - Notícias e Conteúdos Contábeis</title>
+    <meta name="description" content="Blog da Hanatécia Contabilidade: notícias atualizadas sobre Reforma Tributária, Imposto de Renda, INSS, abertura de empresas e legislação contábil.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .logo-text, .nav-links a {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        :root {
+            --vinho: #6a1b2a;
+            --vinho-escuro: #4e1320;
+            --vinho-claro: #8e2a3b;
+            --vinho-suave: #fdf5f6;
+            --vinho-gradiente: linear-gradient(135deg, #6a1b2a 0%, #8e2a3b 100%);
+            --branco: #ffffff;
+            --cinza-claro: #faf9fc;
+            --cinza-borda: #ece8ea;
+            --cinza-texto: #4a4a4a;
+            --shadow-sm: 0 10px 30px -12px rgba(106, 27, 42, 0.12);
+            --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* HEADER */
+        .header {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--cinza-borda);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--vinho);
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: #6a6a6a;
+            letter-spacing: 0.6px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 42px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c2c2c;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--vinho);
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--vinho);
+        }
+
+        /* BLOG HEADER */
+        .blog-header {
+            background: linear-gradient(125deg, #fffef9 0%, var(--vinho-suave) 100%);
+            padding: 60px 0 50px;
+            text-align: center;
+        }
+
+        .blog-header h1 {
+            font-size: 3rem;
+            color: var(--vinho);
+            margin-bottom: 16px;
+        }
+
+        .blog-header p {
+            font-size: 1.1rem;
+            color: var(--cinza-texto);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* BLOG GRID */
+        .blog-grid {
+            padding: 70px 0;
+            background: var(--branco);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .post-card {
+            background: var(--branco);
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid var(--cinza-borda);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .post-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--vinho-claro);
+            box-shadow: var(--shadow-md);
+        }
+
+        .post-image {
+            height: 220px;
+            background: var(--vinho-suave);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--vinho);
+            border-bottom: 1px solid var(--cinza-borda);
+        }
+
+        .post-content {
+            padding: 28px;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: var(--vinho);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .post-content h2 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #1e1e1e;
+            line-height: 1.3;
+        }
+
+        .post-meta {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .post-excerpt {
+            color: var(--cinza-texto);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: var(--vinho);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+        }
+
+        /* POST COMPLETO (SINGLE) */
+        .single-post {
+            padding: 60px 0;
+            background: var(--branco);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--vinho);
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .single-title {
+            font-size: 2.5rem;
+            color: var(--vinho);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .single-meta {
+            color: #888;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--cinza-borda);
+        }
+
+        .single-content {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2c2c2c;
+        }
+
+        .single-content p {
+            margin-bottom: 20px;
+        }
+
+        .single-content h3 {
+            font-size: 1.5rem;
+            color: var(--vinho);
+            margin: 30px 0 15px;
+        }
+
+        .single-content ul, .single-content ol {
+            margin: 20px 0 20px 30px;
+        }
+
+        .single-content li {
+            margin-bottom: 8px;
+        }
+
+        .premium-box {
+            background: linear-gradient(135deg, #fff8e7, #fff0d6);
+            border-left: 4px solid var(--vinho);
+            padding: 24px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--vinho-escuro);
+            color: #f0d8de;
+            padding: 44px 0;
+            text-align: center;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+            transition: all 0.2s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .nav-links {
+                gap: 28px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            .single-title {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1>Hanatécia</h1>
+                <p>Contabilidade e Assessoria Tributária</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="index.html#atuacao">Atuação</a></li>
+                <li><a href="blog.html" style="color: var(--vinho); font-weight: 700;">Blog</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main id="blog-app">
+    <!-- LISTAGEM DE POSTS -->
+    <div id="blog-list">
+        <div class="blog-header">
+            <div class="container">
+                <h1>Blog da Hanatécia</h1>
+                <p>Notícias atualizadas, análises fiscais e conteúdos exclusivos sobre contabilidade, impostos e gestão empresarial.</p>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <div class="container">
+                <div class="posts-grid" id="posts-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POST INDIVIDUAL (inicialmente escondido) -->
+    <div id="single-post" style="display: none;">
+        <div class="single-post">
+            <div class="container post-container">
+                <a href="#" id="back-link" class="back-to-blog"><i class="fas fa-arrow-left"></i> Voltar ao Blog</a>
+                <div id="single-content-wrapper"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Hanatécia Contabilidade e Assessoria Tributária. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">CNPJ em fase de registro | Contadora responsável: Hanatécia</p>
+    </div>
+</footer>
+
+<a href="https://wa.me/5561992151553?text=Olá%20Hanatécia,%20gostaria%20de%20informações%20sobre%20serviços%20contábeis" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // DADOS DOS POSTS (baseado nas matérias enviadas)
+    const posts = [
+        {
+            id: 1,
+            title: "4 impactos da Reforma Tributária nas atividades contábeis",
+            category: "Reforma Tributária",
+            date: "02 de abril de 2026",
+            excerpt: "Como a Reforma Tributária redefine a rotina dos escritórios de contabilidade e exige nova postura profissional.",
+            fullContent: `
+                <p>O sistema tributário brasileiro, historicamente conhecido por sua complexidade, está passando por aquela que é considerada a maior transformação fiscal das últimas décadas.</p>
+                <p>No olho do furacão dessa mudança estão os contadores, profissionais que agora precisam equilibrar o peso do passado burocrático com as exigências de um futuro digital e consultivo.</p>
+                <p>Para esses especialistas, a reforma não é apenas uma mudança de leis, mas uma transformação profunda na rotina operacional que exige atualização constante e uma nova forma de enxergar o valor do seu trabalho.</p>
+                <h3>Impactos da reforma tributária na rotina contábil</h3>
+                <p>A reestruturação do sistema nacional atinge o núcleo das operações de suporte empresarial, exigindo que o setor se reinvente em quatro frentes principais:</p>
+                <ul>
+                    <li><strong>Recálculo da carga e apuração:</strong> Com a fusão de diversos impostos, a forma de calcular o que é devido passa por uma simplificação teórica, mas que na prática impõe vigilância rigorosa.</li>
+                    <li><strong>Modernização da escrituração:</strong> O registro dos fatos contábeis torna-se mais ágil e padronizado digitalmente, exigindo equipes capacitadas.</li>
+                    <li><strong>Gestão do cronograma de obrigações:</strong> O cumprimento dos prazos de migração é crítico para garantir a regularidade fiscal.</li>
+                    <li><strong>Ascensão do papel consultivo:</strong> O foco deixa de ser o preenchimento de formulários e passa a ser a inteligência de negócio.</li>
+                </ul>
+                <p>Essas transformações demandam uma postura proativa. O mercado agora valoriza o profissional que não apenas reage às mudanças, mas que se antecipa a elas, preparando o terreno para que seus clientes atravessem a transição com segurança e eficiência.</p>
+                <div class="premium-box">
+                    <i class="fas fa-star" style="color: var(--vinho); margin-right: 8px;"></i> <strong>Conteúdo exclusivo para assinantes</strong><br>
+                    Acesso a guias completos, navegação sem anúncios e materiais premium. Consulte nossa equipe para mais informações.
+                </div>
+                <p><strong>Conclusão:</strong> Preparar-se para essa nova era exige um acompanhamento rigoroso das etapas de implementação e um investimento pesado em educação continuada. Quem se antecipar não apenas sobreviverá à mudança, mas se consolidará como agente essencial na nova economia brasileira.</p>
+            `,
+            imageIcon: "fas fa-chart-line"
+        },
+        {
+            id: 2,
+            title: "5 Leis que afetam a contabilidade em 2026",
+            category: "Legislação",
+            date: "02 de abril de 2026",
+            excerpt: "Setor contábil precisa ficar atento ao que está em debate e tramitação no Congresso Nacional este ano.",
+            fullContent: `
+                <p>O cenário contábil brasileiro é reconhecido por sua dinâmica intensa, exigindo que profissionais e gestores de escritórios mantenham uma vigilância constante sobre o fluxo legislativo.</p>
+                <p>Com a chegada de 2026, essa atenção precisa ser redobrada: estamos diante de um ciclo de reestruturações profundas que prometem transformar a rotina operacional e estratégica do setor com a Reforma Tributária.</p>
+                <h3>Projetos de Lei que impactam a contabilidade</h3>
+                <ul>
+                    <li><strong>Aumento do limite de faturamento do MEI e Simples Nacional (PLP 108/2021):</strong> Proposta eleva o limite do MEI para R$ 130 mil e permite contratação de até 2 funcionários.</li>
+                    <li><strong>Reforma Tributária (Lei Complementar nº 214/2025):</strong> Institui o IBS e a CBS, alterando drasticamente a apuração fiscal.</li>
+                    <li><strong>Piso Salarial do Contador no Serviço Público (PL 1645/2022):</strong> Visa estabelecer piso nacional para contadores da administração pública.</li>
+                    <li><strong>Inviolabilidade do escritório contábil (PL 1633/2022):</strong> Garante proteção aos dados e à privacidade dos clientes.</li>
+                    <li><strong>Férias fiscais para o contador (PLP 116/2021):</strong> Suspende prazos de obrigações acessórias entre 20 de dezembro e 20 de janeiro.</li>
+                </ul>
+                <p>Acompanhar esses projetos é essencial para o planejamento estratégico dos escritórios de contabilidade em 2026.</p>
+            `,
+            imageIcon: "fas fa-gavel"
+        },
+        {
+            id: 3,
+            title: "Quanto custa abrir uma empresa no Amapá em 2026?",
+            category: "Abertura de Empresa",
+            date: "02 de abril de 2026",
+            excerpt: "Estado avança na digitalização, mas custos de abertura ainda variam conforme a natureza jurídica do negócio.",
+            fullContent: `
+                <p>O Amapá tem se posicionado como uma fronteira de oportunidades na Região Norte, atraindo empreendedores interessados na proximidade com o mercado caribenho e europeu via Guiana Francesa.</p>
+                <p>Neste ano, o cenário amapaense é marcado pela modernização: a Junta Comercial do Estado do Amapá (JUCAP) consolidou o registro digital, reduzindo drasticamente o tempo de espera.</p>
+                <h3>Custos de abertura para empresas</h3>
+                <ul>
+                    <li><strong>MEI:</strong> Isento de taxa de abertura. DAS mensal entre R$ 81 e R$ 87.</li>
+                    <li><strong>EI (Individual):</strong> Taxa JUCAP ~R$ 145 + Certificado Digital R$ 140-R$ 250.</li>
+                    <li><strong>LTDA:</strong> Taxa JUCAP ~R$ 380 + certificado digital.</li>
+                    <li><strong>S/A Fechada:</strong> Taxa JUCAP ~R$ 720 + publicações legais acima de R$ 1.500.</li>
+                </ul>
+                <p>O segredo do sucesso no estado é realizar a consulta prévia de viabilidade antes de qualquer desembolso.</p>
+            `,
+            imageIcon: "fas fa-building"
+        },
+        {
+            id: 4,
+            title: "Autônomos podem recuperar parte do aluguel no IR 2026",
+            category: "Imposto de Renda",
+            date: "03 de abril de 2026",
+            excerpt: "Profissionais que trabalham em home office e pagam aluguel podem deduzir até 20% das despesas da residência.",
+            fullContent: `
+                <p>O trabalho em home office passou a fazer parte da realidade de milhares de profissionais autônomos no Brasil. O que muitos podem ainda não saber é que trabalhar em casa pode trazer vantagens fiscais.</p>
+                <p>A legislação da Receita Federal permite que parte das despesas da residência, quando ela também funciona como local de trabalho, seja usada para diminuir a base de cálculo do imposto mensal no Carnê-Leão Web.</p>
+                <h3>Como funciona essa dedução</h3>
+                <p>A Receita Federal permite considerar como dedutíveis até 20% das despesas da residência, desde que o imóvel seja utilizado como local de trabalho e seja alugado. Entram no cálculo gastos como condomínio, IPTU, aluguel, energia, internet e água.</p>
+                <p>Para que a dedução seja válida, é essencial manter a documentação em dia e o contrato de locação no nome do contribuinte.</p>
+            `,
+            imageIcon: "fas fa-home"
+        },
+        {
+            id: 5,
+            title: "Reforma tributária e fiscalização: o que muda na prática",
+            category: "Reforma Tributária",
+            date: "02 de abril de 2026",
+            excerpt: "O custo do erro aumenta com o novo modelo de apuração baseado em crédito e débito interligado entre empresas.",
+            fullContent: `
+                <p>A reforma tributária reorganiza o sistema brasileiro ao substituir tributos como PIS, Cofins, ICMS e ISS por dois impostos principais: CBS e IBS.</p>
+                <p>O ponto central dessa mudança não está apenas na redução de regras, mas no funcionamento do sistema. O novo modelo exige que cada operação esteja corretamente registrada e vinculada à cadeia de transações.</p>
+                <h3>Como funciona a apuração no modelo IBS/CBS</h3>
+                <p>Quando a empresa realiza uma venda, gera um débito tributário. Quando adquire insumos, gera créditos. Esses créditos só são reconhecidos quando a operação está corretamente documentada.</p>
+                <p>Isso cria uma dependência direta entre empresas. O crédito de quem compra depende da informação declarada por quem vende.</p>
+                <h3>O que muda na fiscalização</h3>
+                <p>Com a padronização das informações, o sistema identifica divergências de forma automatizada, reduzindo a dependência de auditorias pontuais.</p>
+            `,
+            imageIcon: "fas fa-search"
+        },
+        {
+            id: 6,
+            title: "INSS suspende pagamentos de benefícios na Sexta-feira Santa",
+            category: "INSS",
+            date: "02 de abril de 2026",
+            excerpt: "Agências fecham em todo o país e depósitos de benefícios serão retomados na segunda-feira, 6 de abril.",
+            fullContent: `
+                <p>Os segurados do Instituto Nacional do Seguro Social (INSS) devem ficar atentos ao calendário da Semana Santa. Devido ao feriado nacional da Sexta-feira Santa, o órgão confirmou a suspensão dos pagamentos e do atendimento presencial em todas as suas agências no dia 3 de abril.</p>
+                <p>As unidades de atendimento reabrem as portas apenas na segunda-feira (6). O cronograma de depósitos também sofre um breve intervalo: os beneficiários que recebem até um salário mínimo e possuem cartão com final 8 terão os valores liberados na segunda-feira.</p>
+                <h3>Canais digitais</h3>
+                <p>A plataforma Meu INSS permanece ativa 24 horas por dia, permitindo o envio de solicitações de benefícios, consulta de extratos e agendamentos. A Central 135 terá atendimento eletrônico na sexta e retoma atendimento humano no sábado.</p>
+            `,
+            imageIcon: "fas fa-calendar-alt"
+        }
+    ];
+
+    let currentView = 'list';
+
+    function renderList() {
+        const container = document.getElementById('posts-container');
+        if (!container) return;
+        
+        container.innerHTML = posts.map(post => `
+            <div class="post-card" data-id="${post.id}">
+                <div class="post-image">
+                    <i class="${post.imageIcon}" style="font-size: 48px; color: var(--vinho);"></i>
+                </div>
+                <div class="post-content">
+                    <span class="post-category">${post.category}</span>
+                    <h2>${post.title}</h2>
+                    <div class="post-meta">
+                        <span><i class="far fa-calendar-alt"></i> ${post.date}</span>
+                        <span><i class="far fa-user"></i> Hanatécia Contabilidade</span>
+                    </div>
+                    <p class="post-excerpt">${post.excerpt}</p>
+                    <a href="#" class="read-more" data-id="${post.id}">Ler matéria completa <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        `).join('');
+
+        // Adicionar eventos
+        document.querySelectorAll('.post-card, .read-more').forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = el.closest('.post-card')?.dataset.id || el.dataset.id;
+                if (id) showPost(parseInt(id));
+            });
+        });
+    }
+
+    function showPost(id) {
+        const post = posts.find(p => p.id === id);
+        if (!post) return;
+
+        const listDiv = document.getElementById('blog-list');
+        const singleDiv = document.getElementById('single-post');
+        const singleWrapper = document.getElementById('single-content-wrapper');
+
+        if (listDiv && singleDiv && singleWrapper) {
+            singleWrapper.innerHTML = `
+                <h1 class="single-title">${post.title}</h1>
+                <div class="single-meta">
+                    <span><i class="far fa-calendar-alt"></i> ${post.date}</span> | 
+                    <span><i class="far fa-folder"></i> ${post.category}</span> | 
+                    <span><i class="far fa-user"></i> Hanatécia Contabilidade</span>
+                </div>
+                <div class="single-content">
+                    ${post.fullContent}
+                    <hr style="margin: 40px 0 20px; border-color: var(--cinza-borda);">
+                    <p style="font-size: 0.9rem; color: #666;"><i class="fas fa-share-alt"></i> Compartilhe este conteúdo com seus contatos. Para mais informações, entre em contato com nossa equipe.</p>
+                </div>
+            `;
+            listDiv.style.display = 'none';
+            singleDiv.style.display = 'block';
+            currentView = 'single';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    function showList() {
+        const listDiv = document.getElementById('blog-list');
+        const singleDiv = document.getElementById('single-post');
+        if (listDiv && singleDiv) {
+            listDiv.style.display = 'block';
+            singleDiv.style.display = 'none';
+            currentView = 'list';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    // Configurar back button
+    document.addEventListener('DOMContentLoaded', () => {
+        renderList();
+        
+        const backLink = document.getElementById('back-link');
+        if (backLink) {
+            backLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showList();
+            });
+        }
+
+        // Verificar se há hash na URL para abrir post específico
+        if (window.location.hash && window.location.hash.includes('post=')) {
+            const id = parseInt(window.location.hash.split('=')[1]);
+            if (!isNaN(id)) showPost(id);
+        }
+    });
+</script>
+</body>
+</html>
