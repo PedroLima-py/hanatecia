@@ -47,68 +47,40 @@
             --cinza-texto: #4a4a4a;
             --shadow-sm: 0 10px 30px -12px rgba(106, 27, 42, 0.12);
             --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 30px 50px -12px rgba(106, 27, 42, 0.2);
         }
 
         /* Animações */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.3; }
         }
 
-        .animate-fade-up {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .animate-fade-left {
-            animation: fadeInLeft 0.8s ease forwards;
-        }
-
-        .animate-fade-right {
-            animation: fadeInRight 0.8s ease forwards;
-        }
-
+        /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
-            position: sticky;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
             top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--cinza-borda);
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(106, 27, 42, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -116,30 +88,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
-            flex-wrap: wrap;
+            padding: 16px 0;
         }
 
         .logo h1 {
-            font-size: 1.85rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--vinho);
             letter-spacing: -0.5px;
             transition: transform 0.3s ease;
         }
 
-        .logo h1:hover {
-            transform: scale(1.02);
-        }
+        .logo h1:hover { transform: scale(1.02); }
+        .logo p { font-size: 0.7rem; color: #6a6a6a; letter-spacing: 0.6px; font-weight: 500; text-transform: uppercase; }
 
-        .logo p {
-            font-size: 0.7rem;
-            color: #6a6a6a;
-            letter-spacing: 0.6px;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
+        /* Menu Desktop */
         .nav-links {
             display: flex;
             gap: 42px;
@@ -152,7 +115,6 @@
             color: #2c2c2c;
             transition: color 0.3s ease;
             font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
             position: relative;
         }
 
@@ -167,39 +129,73 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--vinho); }
 
-        .nav-links a:hover {
+        /* Menu Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
             color: var(--vinho);
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
 
+        .menu-toggle:hover { transform: scale(1.05); }
+
+        @media (max-width: 900px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 40px 32px;
+                gap: 28px;
+                box-shadow: 4px 0 30px rgba(0, 0, 0, 0.1);
+                transition: left 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                z-index: 999;
+                border-right: 1px solid var(--cinza-borda);
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 1.1rem; }
+        }
+
+        /* Blog Header */
         .blog-header {
-            background: linear-gradient(125deg, #fffef9 0%, var(--vinho-suave) 100%);
-            padding: 60px 0 50px;
+            background: linear-gradient(135deg, #fffef9 0%, var(--vinho-suave) 100%);
+            padding: 120px 0 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            margin-top: 0;
         }
 
         .blog-header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
+            top: -30%;
+            right: -10%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(106,27,42,0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(106,27,42,0.06) 0%, transparent 70%);
             border-radius: 50%;
-            pointer-events: none;
-            animation: pulse 8s ease-in-out infinite;
+            animation: pulse 12s ease-in-out infinite;
         }
 
         .blog-header h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: var(--vinho);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
         }
@@ -207,22 +203,24 @@
         .blog-header p {
             font-size: 1.1rem;
             color: var(--cinza-texto);
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.2s forwards;
         }
 
+        /* Blog Grid */
         .blog-grid {
-            padding: 70px 0;
+            padding: 80px 0;
             background: var(--branco);
         }
 
         .posts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 45px;
         }
 
         .post-card {
@@ -234,21 +232,20 @@
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease forwards;
+            transform: translateY(40px);
         }
 
-        .post-card:nth-child(1) { animation-delay: 0.1s; }
-        .post-card:nth-child(2) { animation-delay: 0.2s; }
-        .post-card:nth-child(3) { animation-delay: 0.3s; }
-        .post-card:nth-child(4) { animation-delay: 0.4s; }
-        .post-card:nth-child(5) { animation-delay: 0.5s; }
-        .post-card:nth-child(6) { animation-delay: 0.6s; }
+        .post-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.1s forwards; }
+        .post-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.2s forwards; }
+        .post-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.3s forwards; }
+        .post-card:nth-child(4) { animation: fadeInUp 0.6s ease 0.4s forwards; }
+        .post-card:nth-child(5) { animation: fadeInUp 0.6s ease 0.5s forwards; }
+        .post-card:nth-child(6) { animation: fadeInUp 0.6s ease 0.6s forwards; }
 
         .post-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
             border-color: var(--vinho-claro);
-            box-shadow: 0 28px 36px -16px rgba(106, 27, 42, 0.2);
+            box-shadow: var(--shadow-lg);
         }
 
         .post-image {
@@ -260,7 +257,7 @@
             font-size: 3rem;
             color: var(--vinho);
             border-bottom: 1px solid var(--cinza-borda);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .post-card:hover .post-image {
@@ -269,15 +266,15 @@
 
         .post-card:hover .post-image i {
             color: white;
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .post-image i {
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .post-content {
-            padding: 28px;
+            padding: 32px;
         }
 
         .post-category {
@@ -285,9 +282,9 @@
             background: var(--vinho);
             color: white;
             font-size: 0.7rem;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 30px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -298,8 +295,8 @@
         }
 
         .post-content h2 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.45rem;
+            margin-bottom: 14px;
             color: #1e1e1e;
             line-height: 1.3;
             transition: color 0.3s ease;
@@ -314,14 +311,14 @@
             color: #888;
             margin-bottom: 16px;
             display: flex;
-            gap: 16px;
+            gap: 18px;
         }
 
         .post-excerpt {
             color: var(--cinza-texto);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            margin-bottom: 22px;
         }
 
         .read-more {
@@ -330,18 +327,19 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-size: 0.85rem;
             transition: all 0.3s ease;
         }
 
         .read-more:hover {
-            gap: 12px;
+            gap: 14px;
             color: var(--vinho-escuro);
         }
 
+        /* Single Post */
         .single-post {
-            padding: 60px 0;
+            padding: 100px 0 70px;
             background: var(--branco);
         }
 
@@ -353,23 +351,23 @@
         .back-to-blog {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: var(--vinho);
             text-decoration: none;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .back-to-blog:hover {
-            gap: 12px;
+            gap: 15px;
             color: var(--vinho-escuro);
         }
 
         .single-title {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--vinho);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             line-height: 1.3;
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
@@ -377,8 +375,8 @@
 
         .single-meta {
             color: #888;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
             border-bottom: 1px solid var(--cinza-borda);
             opacity: 0;
             animation: fadeInUp 0.6s ease 0.1s forwards;
@@ -393,50 +391,52 @@
         }
 
         .single-content p {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .single-content h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--vinho);
-            margin: 30px 0 15px;
+            margin: 35px 0 18px;
         }
 
         .single-content ul, .single-content ol {
-            margin: 20px 0 20px 30px;
+            margin: 20px 0 24px 32px;
         }
 
         .single-content li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             transition: transform 0.2s ease;
         }
 
         .single-content li:hover {
-            transform: translateX(5px);
+            transform: translateX(6px);
         }
 
+        /* Footer */
         .footer {
             background: var(--vinho-escuro);
             color: #f0d8de;
-            padding: 44px 0;
+            padding: 50px 0;
             text-align: center;
         }
 
+        /* WhatsApp Float */
         .whatsapp-float {
             position: fixed;
             bottom: 28px;
             right: 28px;
             background: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 62px;
+            height: 62px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            font-size: 34px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
             z-index: 999;
             text-decoration: none;
             animation: pulse 2s ease-in-out infinite;
@@ -448,40 +448,28 @@
             animation: none;
         }
 
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 18px;
-            }
-            .nav-links {
-                gap: 28px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .posts-grid {
-                grid-template-columns: 1fr;
-            }
-            .single-title {
-                font-size: 1.8rem;
-            }
-            .container {
-                padding: 0 20px;
-            }
-            .blog-header h1 {
-                font-size: 2.2rem;
-            }
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .blog-header h1 { font-size: 2.6rem; }
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-            .post-content {
-                padding: 20px;
-            }
-            .blog-header {
-                padding: 40px 0 30px;
-            }
+        @media (max-width: 900px) {
+            .blog-header { padding: 100px 0 50px; }
+            .blog-header h1 { font-size: 2.2rem; }
+            .container { padding: 0 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .posts-grid { grid-template-columns: 1fr; gap: 35px; }
+            .single-title { font-size: 1.8rem; }
+            .post-content { padding: 24px; }
+        }
+
+        @media (max-width: 550px) {
+            .blog-header { padding: 90px 0 40px; }
+            .blog-header h1 { font-size: 1.8rem; }
+            .blog-header p { font-size: 0.95rem; }
+            .container { padding: 0 18px; }
         }
     </style>
 </head>
@@ -494,7 +482,10 @@
                 <h1>Hanatécia</h1>
                 <p>Contabilidade e Assessoria Tributária</p>
             </div>
-            <ul class="nav-links">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Início</a></li>
                 <li><a href="index.html#sobre">Sobre</a></li>
                 <li><a href="index.html#servicos">Serviços</a></li>
@@ -534,7 +525,7 @@
 <footer class="footer">
     <div class="container">
         <p>© 2026 Hanatécia Contabilidade e Assessoria Tributária. Todos os direitos reservados.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">CNPJ em fase de registro | Contadora responsável: Hanatécia</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">CNPJ em fase de registro | Contadora responsável: Hanatécia</p>
     </div>
 </footer>
 
@@ -563,7 +554,7 @@
                     <li><strong>Ascensão do papel consultivo:</strong> O foco deixa de ser o preenchimento de formulários e passa a ser a inteligência de negócio.</li>
                 </ul>
                 <p>Essas transformações demandam uma postura proativa. O mercado agora valoriza o profissional que não apenas reage às mudanças, mas que se antecipa a elas, preparando o terreno para que seus clientes atravessem a transição com segurança e eficiência.</p>
-                <p><strong>Conclusão:</strong> Preparar-se para essa nova era exige um acompanhamento rigoroso das etapas de implementação e um investimento pesado em educação continuada. Quem se antecipar não apenas sobreviverá à mudança, mas se consolidará como agente essencial na nova economia brasileira, transformando a complexidade fiscal em uma vantagem estratégica para seus parceiros de negócios.</p>
+                <p><strong>Conclusão:</strong> Preparar-se para essa nova era exige um acompanhamento rigoroso das etapas de implementação e um investimento pesado em educação continuada. Quem se antecipar não apenas sobreviverá à mudança, mas se consolidará como agente essencial na nova economia brasileira.</p>
             `,
             imageIcon: "fas fa-chart-line"
         },
@@ -576,16 +567,15 @@
             fullContent: `
                 <p>O cenário contábil brasileiro é reconhecido por sua dinâmica intensa, exigindo que profissionais e gestores de escritórios mantenham uma vigilância constante sobre o fluxo legislativo.</p>
                 <p>Com a chegada de 2026, essa atenção precisa ser redobrada: estamos diante de um ciclo de reestruturações profundas que prometem transformar a rotina operacional e estratégica do setor com a Reforma Tributária.</p>
-                <p>Além das discussões sobre conquistas históricas para a categoria — como a viabilização das férias fiscais —, diversos Projetos de Lei avançam no Congresso Nacional com potencial para alterar obrigações e processos fundamentais. Estar atualizado não é mais um diferencial, mas uma condição de sobrevivência e conformidade.</p>
                 <h3>Projetos de Lei que impactam a contabilidade</h3>
                 <ul>
-                    <li><strong>Aumento do limite de faturamento do MEI e Simples Nacional (PLP 108/2021):</strong> Proposta eleva o limite do MEI para R$ 130 mil e permite contratação de até 2 funcionários. O projeto já foi aprovado no Senado e aguarda votação na Câmara.</li>
-                    <li><strong>Reforma Tributária (Lei Complementar nº 214/2025):</strong> Institui o IBS e a CBS, alterando drasticamente a apuração fiscal. A substituição dos impostos segue cronograma gradual de implementação.</li>
-                    <li><strong>Piso Salarial do Contador no Serviço Público (PL 1645/2022):</strong> Visa estabelecer piso nacional para contadores da administração pública, com valor proposto em torno de R$ 4.631 para jornada de 8 horas.</li>
-                    <li><strong>Inviolabilidade do escritório contábil (PL 1633/2022):</strong> Garante proteção aos dados e à privacidade dos clientes, assegurando que o Estado continue arrecadando tributos sem comprometer informações de quem não é alvo de investigação.</li>
-                    <li><strong>Férias fiscais para o contador (PLP 116/2021):</strong> Suspende prazos de obrigações acessórias e processos administrativos entre 20 de dezembro e 20 de janeiro, um dos temas centrais de mobilização das entidades contábeis para 2026.</li>
+                    <li><strong>Aumento do limite de faturamento do MEI e Simples Nacional (PLP 108/2021)</strong></li>
+                    <li><strong>Reforma Tributária (Lei Complementar nº 214/2025)</strong></li>
+                    <li><strong>Piso Salarial do Contador no Serviço Público (PL 1645/2022)</strong></li>
+                    <li><strong>Inviolabilidade do escritório contábil (PL 1633/2022)</strong></li>
+                    <li><strong>Férias fiscais para o contador (PLP 116/2021)</strong></li>
                 </ul>
-                <p>Acompanhar esses projetos é essencial para o planejamento estratégico dos escritórios de contabilidade em 2026. A matéria ganhou força e merece toda a atenção do setor.</p>
+                <p>Acompanhar esses projetos é essencial para o planejamento estratégico dos escritórios de contabilidade em 2026.</p>
             `,
             imageIcon: "fas fa-gavel"
         },
@@ -597,16 +587,15 @@
             excerpt: "Estado avança na digitalização, mas custos de abertura ainda variam conforme a natureza jurídica do negócio.",
             fullContent: `
                 <p>O Amapá tem se posicionado como uma fronteira de oportunidades na Região Norte, atraindo empreendedores interessados na proximidade com o mercado caribenho e europeu via Guiana Francesa.</p>
-                <p>Neste ano, o cenário amapaense é marcado pela modernização: a Junta Comercial do Estado do Amapá (JUCAP) consolidou o registro digital, reduzindo drasticamente o tempo de espera. Contudo, o custo inicial permanece como o principal filtro na escolha da estrutura jurídica ideal.</p>
-                <p>Diferente de outros estados, o Amapá opera com fortes incentivos em áreas de livre comércio, mas mantém exigências rigorosas de licenciamento para garantir o desenvolvimento sustentável da região amazônica. O sistema "Empresa Fácil Amapá" permite que negócios de baixo risco sejam abertos de forma totalmente online.</p>
+                <p>Neste ano, o cenário amapaense é marcado pela modernização: a Junta Comercial do Estado do Amapá (JUCAP) consolidou o registro digital, reduzindo drasticamente o tempo de espera.</p>
                 <h3>Custos de abertura para empresas</h3>
                 <ul>
                     <li><strong>MEI:</strong> Isento de taxa de abertura. DAS mensal entre R$ 81 e R$ 87.</li>
-                    <li><strong>EI (Individual):</strong> Taxa JUCAP ~R$ 145 + Certificado Digital R$ 140 a R$ 250.</li>
-                    <li><strong>LTDA:</strong> Taxa JUCAP ~R$ 380 + certificado digital + taxas municipais em Macapá a partir de R$ 490.</li>
-                    <li><strong>S/A Fechada:</strong> Taxa JUCAP ~R$ 720 + publicações legais acima de R$ 1.500 anuais.</li>
+                    <li><strong>EI (Individual):</strong> Taxa JUCAP ~R$ 145 + Certificado Digital</li>
+                    <li><strong>LTDA:</strong> Taxa JUCAP ~R$ 380 + certificado digital</li>
+                    <li><strong>S/A Fechada:</strong> Taxa JUCAP ~R$ 720 + publicações legais</li>
                 </ul>
-                <p>Para Microempresas (EI e LTDA), o investimento inicial fica entre R$ 800 e R$ 1.700. O segredo do sucesso no estado é realizar a consulta prévia de viabilidade antes de qualquer desembolso, garantindo que o local escolhido esteja em conformidade com as normas municipais e ambientais.</p>
+                <p>O segredo do sucesso no estado é realizar a consulta prévia de viabilidade antes de qualquer desembolso.</p>
             `,
             imageIcon: "fas fa-building"
         },
@@ -617,13 +606,11 @@
             date: "03 de abril de 2026",
             excerpt: "Profissionais que trabalham em home office e pagam aluguel podem deduzir até 20% das despesas da residência.",
             fullContent: `
-                <p>O trabalho em home office passou a fazer parte da realidade de milhares de profissionais autônomos no Brasil. O que muitos podem ainda não saber é que trabalhar em casa pode trazer vantagens fiscais, especialmente para quem paga aluguel e recebe rendimentos de pessoas físicas.</p>
+                <p>O trabalho em home office passou a fazer parte da realidade de milhares de profissionais autônomos no Brasil. O que muitos podem ainda não saber é que trabalhar em casa pode trazer vantagens fiscais.</p>
                 <p>A legislação da Receita Federal permite que parte das despesas da residência, quando ela também funciona como local de trabalho, seja usada para diminuir a base de cálculo do imposto mensal no Carnê-Leão Web.</p>
                 <h3>Como funciona essa dedução</h3>
-                <p>O mecanismo não significa que o profissional receba um reembolso direto do valor do aluguel. Trata-se de uma dedução das despesas necessárias à atividade, que reduz o rendimento tributável e, por consequência, o imposto pago mês a mês.</p>
-                <p>A Receita Federal permite considerar como dedutíveis até 20% das despesas da residência, desde que o imóvel seja utilizado como local de trabalho e seja alugado. Entram no cálculo gastos como condomínio, IPTU, aluguel, energia, internet e água, todos vinculados ao endereço onde a atividade é exercida.</p>
-                <p>Para que a dedução seja válida, algumas condições precisam ser seguidas: o imóvel deve ser alugado (não próprio), os comprovantes devem ser guardados, o contrato de locação precisa estar em nome do contribuinte, e apenas 20% das despesas residenciais podem ser considerados.</p>
-                <p>A ideia de "dinheiro de volta" em relação ao aluguel se refere indiretamente aos efeitos das deduções sobre o imposto de renda. Ao diminuir a base de cálculo mês a mês, o imposto recolhido pode ficar abaixo do que seria devido sem os abatimentos, gerando uma possível restituição nas próximas declarações.</p>
+                <p>A Receita Federal permite considerar como dedutíveis até 20% das despesas da residência, desde que o imóvel seja utilizado como local de trabalho e seja alugado.</p>
+                <p>Para que a dedução seja válida, é essencial manter a documentação em dia e o contrato de locação no nome do contribuinte.</p>
             `,
             imageIcon: "fas fa-home"
         },
@@ -634,15 +621,11 @@
             date: "02 de abril de 2026",
             excerpt: "O custo do erro aumenta com o novo modelo de apuração baseado em crédito e débito interligado entre empresas.",
             fullContent: `
-                <p>A reforma tributária reorganiza o sistema brasileiro ao substituir tributos como PIS, Cofins, ICMS e ISS por dois impostos principais: CBS, de competência federal, e IBS, compartilhado entre estados e municípios. A proposta simplifica a estrutura normativa, mas altera de forma relevante a forma como o imposto será apurado e validado dentro das empresas.</p>
-                <p>O ponto central dessa mudança não está apenas na redução de regras, mas no funcionamento do sistema. O novo modelo passa a exigir que cada operação realizada pela empresa esteja corretamente registrada, classificada e vinculada à cadeia de transações que a originou. Isso ocorre porque o direito ao crédito tributário passa a depender diretamente da consistência dessas informações.</p>
+                <p>A reforma tributária reorganiza o sistema brasileiro ao substituir tributos como PIS, Cofins, ICMS e ISS por dois impostos principais: CBS e IBS.</p>
+                <p>O ponto central dessa mudança não está apenas na redução de regras, mas no funcionamento do sistema. O novo modelo exige que cada operação esteja corretamente registrada e vinculada à cadeia de transações.</p>
                 <h3>Como funciona a apuração no modelo IBS/CBS</h3>
-                <p>No novo sistema, o imposto devido não será apenas resultado da aplicação de uma alíquota sobre a receita. Ele passa a depender da relação entre débitos e créditos gerados ao longo das operações.</p>
-                <p>Quando a empresa realiza uma venda, gera um débito tributário. Quando contrata serviços ou adquire insumos, pode gerar créditos. Esses créditos só são reconhecidos quando a operação que os originou está corretamente documentada, classificada e validada dentro do sistema.</p>
-                <p>Isso cria uma dependência direta entre empresas. O crédito de quem compra passa a depender da informação declarada por quem vende. Se houver erro na emissão da nota, divergência de classificação ou inconsistência cadastral, o crédito deixa de ser reconhecido.</p>
-                <h3>O que muda na fiscalização</h3>
-                <p>Com a padronização e digitalização das informações, o sistema passa a identificar divergências de forma automatizada. Isso reduz a dependência de auditorias pontuais e amplia a capacidade de monitoramento contínuo. O Regime Especial de Fiscalização por até 360 dias ganha relevância prática, podendo ocorrer a partir de indícios como inconsistência de dados ou falhas recorrentes.</p>
-                <p>A contabilidade passa a atuar na estrutura da operação, não apenas no fechamento. O trabalho de validar registros, revisar classificações e garantir consistência antes que a informação entre no sistema torna-se essencial para evitar perda de crédito e aumento da exposição fiscal.</p>
+                <p>Quando a empresa realiza uma venda, gera um débito tributário. Quando adquire insumos, gera créditos. Esses créditos só são reconhecidos quando a operação está corretamente documentada.</p>
+                <p>Isso cria uma dependência direta entre empresas. O crédito de quem compra depende da informação declarada por quem vende.</p>
             `,
             imageIcon: "fas fa-search"
         },
@@ -654,24 +637,20 @@
             excerpt: "Agências fecham em todo o país e depósitos de benefícios serão retomados na segunda-feira, 6 de abril.",
             fullContent: `
                 <p>Os segurados do Instituto Nacional do Seguro Social (INSS) devem ficar atentos ao calendário da Semana Santa. Devido ao feriado nacional da Sexta-feira Santa, o órgão confirmou a suspensão dos pagamentos e do atendimento presencial em todas as suas agências no dia 3 de abril.</p>
-                <p>A paralisação afeta aposentadorias, pensões, auxílios e o Benefício de Prestação Continuada (BPC). As unidades de atendimento funcionam normalmente até quinta-feira (2) e reabrem as portas apenas na segunda-feira (6).</p>
-                <p>O cronograma de depósitos também sofre um breve intervalo: os beneficiários que recebem até um salário mínimo e possuem cartão com final 8 terão os valores liberados na segunda-feira. Para quem recebe acima do piso nacional, os pagamentos para os finais 3 e 8 também começam na mesma data.</p>
+                <p>As unidades de atendimento reabrem as portas apenas na segunda-feira (6). O cronograma de depósitos também sofre um breve intervalo.</p>
                 <h3>Canais digitais</h3>
-                <p>Apesar do fechamento das agências físicas, o INSS reforça que os cidadãos não ficarão totalmente desassistidos. A plataforma Meu INSS (disponível via aplicativo e site) permanece ativa 24 horas por dia, permitindo o envio de solicitações de benefícios, consulta de extratos e agendamentos.</p>
-                <p>Já a Central 135 terá um esquema especial de funcionamento. Na sexta-feira, o atendimento será estritamente eletrônico. O suporte humano será retomado no sábado (4), operando no horário habitual, das 7h às 22h. Vale lembrar que a ligação para o canal é gratuita quando feita de telefones fixos.</p>
+                <p>A plataforma Meu INSS permanece ativa 24 horas por dia, permitindo o envio de solicitações de benefícios, consulta de extratos e agendamentos.</p>
             `,
             imageIcon: "fas fa-calendar-alt"
         }
     ];
-
-    let currentView = 'list';
 
     function renderList() {
         const container = document.getElementById('posts-container');
         if (!container) return;
         
         container.innerHTML = posts.map((post, index) => `
-            <div class="post-card" data-id="${post.id}" style="animation-delay: ${0.1 + index * 0.08}s">
+            <div class="post-card" data-id="${post.id}">
                 <div class="post-image">
                     <i class="${post.imageIcon}" style="font-size: 48px; color: var(--vinho); transition: all 0.3s ease;"></i>
                 </div>
@@ -721,7 +700,6 @@
             `;
             listDiv.style.display = 'none';
             singleDiv.style.display = 'block';
-            currentView = 'single';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
@@ -732,10 +710,38 @@
         if (listDiv && singleDiv) {
             listDiv.style.display = 'block';
             singleDiv.style.display = 'none';
-            currentView = 'list';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
+
+    // Menu Mobile Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksMenu = document.getElementById('navLinks');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinksMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinksMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinksMenu.classList.remove('active');
+            const icon = menuToggle?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
         renderList();
@@ -746,11 +752,6 @@
                 e.preventDefault();
                 showList();
             });
-        }
-
-        if (window.location.hash && window.location.hash.includes('post=')) {
-            const id = parseInt(window.location.hash.split('=')[1]);
-            if (!isNaN(id)) showPost(id);
         }
     });
 </script>

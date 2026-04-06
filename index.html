@@ -47,68 +47,49 @@
             --cinza-texto: #4a4a4a;
             --shadow-sm: 0 10px 30px -12px rgba(106, 27, 42, 0.12);
             --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 30px 50px -12px rgba(106, 27, 42, 0.2);
         }
 
-        /* Animações globais */
+        /* Animações */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.3; }
         }
 
-        .animate-fade-up {
-            animation: fadeInUp 0.8s ease forwards;
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
-        .animate-fade-left {
-            animation: fadeInLeft 0.8s ease forwards;
-        }
+        .animate-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+        .animate-left { animation: fadeInLeft 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+        .animate-right { animation: fadeInRight 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
 
-        .animate-fade-right {
-            animation: fadeInRight 0.8s ease forwards;
-        }
-
+        /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
-            position: sticky;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
             top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--cinza-borda);
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(106, 27, 42, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -116,31 +97,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
-            flex-wrap: wrap;
+            padding: 16px 0;
         }
 
         .logo h1 {
-            font-size: 1.85rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--vinho);
             letter-spacing: -0.5px;
-            line-height: 1.2;
             transition: transform 0.3s ease;
         }
 
-        .logo h1:hover {
-            transform: scale(1.02);
-        }
+        .logo h1:hover { transform: scale(1.02); }
+        .logo p { font-size: 0.7rem; color: #6a6a6a; letter-spacing: 0.6px; font-weight: 500; text-transform: uppercase; }
 
-        .logo p {
-            font-size: 0.7rem;
-            color: #6a6a6a;
-            letter-spacing: 0.6px;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
+        /* Menu Desktop */
         .nav-links {
             display: flex;
             gap: 42px;
@@ -153,7 +124,6 @@
             color: #2c2c2c;
             transition: color 0.3s ease;
             font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
             position: relative;
         }
 
@@ -168,32 +138,76 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--vinho); }
 
-        .nav-links a:hover {
+        /* Menu Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
             color: var(--vinho);
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
 
+        .menu-toggle:hover { transform: scale(1.05); }
+
+        @media (max-width: 900px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 40px 32px;
+                gap: 28px;
+                box-shadow: 4px 0 30px rgba(0, 0, 0, 0.1);
+                transition: left 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                z-index: 999;
+                border-right: 1px solid var(--cinza-borda);
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 1.1rem; }
+        }
+
+        /* Hero */
         .hero {
-            background: linear-gradient(125deg, #fffef9 0%, var(--vinho-suave) 100%);
-            padding: 80px 0 70px;
+            background: linear-gradient(135deg, #fffef9 0%, var(--vinho-suave) 100%);
+            padding: 140px 0 90px;
             position: relative;
             overflow: hidden;
+            margin-top: 0;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(106,27,42,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 12s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
             width: 500px;
             height: 500px;
             background: radial-gradient(circle, rgba(106,27,42,0.05) 0%, transparent 70%);
             border-radius: 50%;
-            pointer-events: none;
-            animation: pulse 8s ease-in-out infinite;
+            animation: pulse 10s ease-in-out infinite reverse;
         }
 
         .hero-grid {
@@ -202,100 +216,79 @@
             align-items: center;
             gap: 60px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero-content {
-            flex: 1.2;
-        }
-
+        .hero-content { flex: 1.2; }
         .hero-badge {
-            background: var(--vinho);
-            color: var(--branco);
+            background: var(--vinho-gradiente);
+            color: white;
             display: inline-block;
-            padding: 6px 18px;
+            padding: 6px 20px;
             border-radius: 40px;
             font-weight: 600;
             font-size: 0.75rem;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .hero-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(106,27,42,0.3);
+            margin-bottom: 28px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(106,27,42,0.2);
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             line-height: 1.2;
             font-weight: 800;
-            color: #1f1f1f;
-            margin-bottom: 20px;
+            color: #1a1a1a;
+            margin-bottom: 24px;
         }
 
         .hero-content h1 span {
             color: var(--vinho);
             position: relative;
             display: inline-block;
-            transition: text-shadow 0.3s ease;
-        }
-
-        .hero-content h1 span:hover {
-            text-shadow: 0 0 8px rgba(106,27,42,0.3);
         }
 
         .hero-content p {
             font-size: 1.1rem;
             color: var(--cinza-texto);
             max-width: 520px;
-            margin-bottom: 32px;
+            margin-bottom: 36px;
         }
 
         .hero-btn {
             background: var(--vinho-gradiente);
-            color: var(--branco);
-            border: none;
-            padding: 14px 34px;
-            border-radius: 44px;
+            color: white;
+            padding: 15px 38px;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            font-size: 1rem;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 6px 14px rgba(106, 27, 42, 0.25);
+            gap: 12px;
             text-decoration: none;
+            box-shadow: 0 8px 20px rgba(106, 27, 42, 0.3);
         }
 
         .hero-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(106, 27, 42, 0.35);
-            gap: 14px;
+            gap: 18px;
+            box-shadow: 0 15px 30px rgba(106, 27, 42, 0.4);
         }
 
         .hero-contact-card {
             flex: 0.9;
-            background: var(--branco);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 32px;
-            padding: 32px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--cinza-borda);
-            backdrop-filter: blur(2px);
-            transition: all 0.3s ease;
+            padding: 36px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(106, 27, 42, 0.1);
+            transition: all 0.4s ease;
         }
 
-        .hero-contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 40px -12px rgba(106, 27, 42, 0.2);
-        }
-
-        .hero-contact-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 22px;
-            color: var(--vinho);
-        }
+        .hero-contact-card:hover { transform: translateY(-8px); box-shadow: 0 35px 55px -12px rgba(106, 27, 42, 0.25); }
+        .hero-contact-card h3 { font-size: 1.5rem; margin-bottom: 24px; color: var(--vinho); }
 
         .contact-item {
             display: flex;
@@ -305,13 +298,10 @@
             transition: transform 0.2s ease;
         }
 
-        .contact-item:hover {
-            transform: translateX(5px);
-        }
-
+        .contact-item:hover { transform: translateX(8px); }
         .contact-item i {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             background: var(--vinho-suave);
             border-radius: 50%;
             display: inline-flex;
@@ -322,100 +312,68 @@
             transition: all 0.3s ease;
         }
 
-        .contact-item:hover i {
-            background: var(--vinho);
-            color: white;
-            transform: scale(1.05);
-        }
+        .contact-item:hover i { background: var(--vinho); color: white; transform: scale(1.05); }
 
+        /* Sobre */
         .sobre {
-            padding: 90px 0;
+            padding: 100px 0;
             background: var(--branco);
         }
 
         .sobre-grid {
             display: flex;
-            gap: 60px;
+            gap: 70px;
             align-items: center;
             flex-wrap: wrap;
         }
 
         .sobre-imagem {
             flex: 1;
-            border-radius: 28px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            min-height: 380px;
-            background: #f0ecef;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s ease;
         }
 
-        .sobre-imagem:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 45px -12px rgba(106, 27, 42, 0.25);
-        }
+        .sobre-imagem:hover { transform: scale(1.02); box-shadow: 0 35px 55px -12px rgba(106, 27, 42, 0.3); }
+        .sobre-imagem img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+        .sobre-imagem:hover img { transform: scale(1.05); }
 
-        .sobre-imagem img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .sobre-imagem:hover img {
-            transform: scale(1.05);
-        }
-
-        .sobre-texto {
-            flex: 1;
-        }
-
+        .sobre-texto { flex: 1; }
         .sobre-texto h2 {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             color: var(--vinho);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             font-weight: 700;
             position: relative;
-            display: inline-block;
         }
 
         .sobre-texto h2::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -12px;
             left: 0;
-            width: 60px;
+            width: 80px;
             height: 3px;
             background: var(--vinho);
-            transition: width 0.3s ease;
-        }
-
-        .sobre-texto h2:hover::after {
-            width: 100%;
         }
 
         .assinatura {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            margin-top: 24px;
-            font-size: 1.1rem;
+            margin-top: 28px;
+            font-size: 1.15rem;
             color: var(--vinho);
             border-left: 3px solid var(--vinho);
-            padding-left: 20px;
+            padding-left: 24px;
             transition: all 0.3s ease;
         }
 
-        .assinatura:hover {
-            border-left-width: 6px;
-            padding-left: 24px;
-        }
+        .assinatura:hover { border-left-width: 6px; padding-left: 28px; }
 
+        /* Serviços Cards */
         .services {
-            padding: 80px 0;
+            padding: 90px 0;
             background: var(--cinza-claro);
         }
 
@@ -426,59 +384,42 @@
         }
 
         .section-header h2 {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: var(--vinho);
             margin-bottom: 16px;
-            position: relative;
-            display: inline-block;
         }
 
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--vinho);
-        }
+        .section-header p { color: var(--cinza-texto); }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 35px;
         }
 
         .service-card {
             background: var(--branco);
             border-radius: 28px;
-            padding: 36px 28px;
-            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+            padding: 40px 30px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             border: 1px solid var(--cinza-borda);
-            box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.02);
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease forwards;
+            transform: translateY(40px);
         }
 
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.1s forwards; }
+        .service-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.2s forwards; }
+        .service-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.3s forwards; }
+        .service-card:nth-child(4) { animation: fadeInUp 0.6s ease 0.4s forwards; }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--vinho-claro);
-            box-shadow: 0 28px 36px -16px rgba(106, 27, 42, 0.2);
-        }
+        .service-card:hover { transform: translateY(-12px); border-color: var(--vinho-claro); box-shadow: var(--shadow-lg); }
 
         .service-icon {
             background: var(--vinho-suave);
-            width: 68px;
-            height: 68px;
-            border-radius: 22px;
+            width: 75px;
+            height: 75px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -486,32 +427,12 @@
             transition: all 0.3s ease;
         }
 
-        .service-card:hover .service-icon {
-            background: var(--vinho);
-        }
+        .service-card:hover .service-icon { background: var(--vinho); }
+        .service-card:hover .service-icon i { color: white; transform: scale(1.05); }
+        .service-icon i { font-size: 34px; color: var(--vinho); transition: all 0.3s ease; }
 
-        .service-card:hover .service-icon i {
-            color: white;
-        }
-
-        .service-icon i {
-            font-size: 32px;
-            color: var(--vinho);
-            transition: color 0.3s ease;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            color: #1e1e1e;
-        }
-
-        .service-card p {
-            color: #5a5a5a;
-            margin-bottom: 26px;
-            font-size: 0.92rem;
-        }
+        .service-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 14px; }
+        .service-card p { color: #5a5a5a; margin-bottom: 26px; font-size: 0.92rem; }
 
         .card-link {
             text-decoration: none;
@@ -523,27 +444,20 @@
             transition: all 0.3s ease;
         }
 
-        .card-link:hover {
-            gap: 14px;
-            color: var(--vinho-escuro);
-        }
+        .card-link:hover { gap: 14px; color: var(--vinho-escuro); }
 
+        /* Lista serviços */
         .services-full {
             background: var(--branco);
-            padding: 80px 0;
+            padding: 90px 0;
         }
 
-        .services-full h2 {
-            text-align: center;
-            margin-bottom: 48px;
-            color: var(--vinho);
-            font-size: 2.2rem;
-        }
+        .services-full h2 { text-align: center; margin-bottom: 50px; color: var(--vinho); font-size: 2.4rem; }
 
         .services-grid-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 16px 28px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px 30px;
         }
 
         .service-item-list {
@@ -551,242 +465,159 @@
             align-items: center;
             gap: 14px;
             background: var(--cinza-claro);
-            padding: 14px 22px;
+            padding: 16px 24px;
             border-radius: 60px;
             transition: all 0.3s ease;
             border: 1px solid transparent;
             opacity: 0;
-            transform: translateX(-20px);
-            animation: fadeInLeft 0.5s ease forwards;
+            transform: translateX(-30px);
         }
 
-        .service-item-list:nth-child(n) {
-            animation-delay: calc(0.05s * var(--i, 1));
-        }
+        .service-item-list:nth-child(1) { animation: fadeInLeft 0.5s ease 0.05s forwards; }
+        .service-item-list:nth-child(2) { animation: fadeInLeft 0.5s ease 0.08s forwards; }
+        .service-item-list:nth-child(3) { animation: fadeInLeft 0.5s ease 0.11s forwards; }
+        .service-item-list:nth-child(4) { animation: fadeInLeft 0.5s ease 0.14s forwards; }
+        .service-item-list:nth-child(5) { animation: fadeInLeft 0.5s ease 0.17s forwards; }
+        .service-item-list:nth-child(6) { animation: fadeInLeft 0.5s ease 0.2s forwards; }
+        .service-item-list:nth-child(7) { animation: fadeInLeft 0.5s ease 0.23s forwards; }
+        .service-item-list:nth-child(8) { animation: fadeInLeft 0.5s ease 0.26s forwards; }
+        .service-item-list:nth-child(9) { animation: fadeInLeft 0.5s ease 0.29s forwards; }
+        .service-item-list:nth-child(10) { animation: fadeInLeft 0.5s ease 0.32s forwards; }
+        .service-item-list:nth-child(11) { animation: fadeInLeft 0.5s ease 0.35s forwards; }
+        .service-item-list:nth-child(12) { animation: fadeInLeft 0.5s ease 0.38s forwards; }
 
-        .service-item-list:hover {
-            border-color: var(--vinho-claro);
-            background: var(--vinho-suave);
-            transform: translateX(5px);
-        }
+        .service-item-list:hover { border-color: var(--vinho-claro); background: var(--vinho-suave); transform: translateX(8px); }
+        .service-item-list i { color: var(--vinho); font-size: 1.1rem; transition: transform 0.2s ease; }
+        .service-item-list:hover i { transform: scale(1.15); }
 
-        .service-item-list i {
-            color: var(--vinho);
-            font-size: 1.1rem;
-            transition: transform 0.2s ease;
-        }
-
-        .service-item-list:hover i {
-            transform: scale(1.1);
-        }
-
+        /* Atuação */
         .actuation {
-            padding: 80px 0;
+            padding: 90px 0;
             background: var(--vinho-suave);
         }
 
         .actuation-grid {
             display: flex;
-            gap: 55px;
+            gap: 60px;
             flex-wrap: wrap;
             align-items: center;
         }
 
-        .actuation-text {
-            flex: 1;
-            opacity: 0;
-            animation: fadeInLeft 0.8s ease forwards;
-        }
-
-        .actuation-text h2 {
-            font-size: 2.3rem;
-            color: var(--vinho);
-            margin-bottom: 22px;
-        }
-
+        .actuation-text { flex: 1; opacity: 0; animation: fadeInLeft 0.8s ease forwards; }
+        .actuation-text h2 { font-size: 2.5rem; color: var(--vinho); margin-bottom: 24px; }
         .actuation-list li {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             display: flex;
-            gap: 12px;
+            gap: 14px;
             align-items: center;
             transition: transform 0.2s ease;
         }
 
-        .actuation-list li:hover {
-            transform: translateX(8px);
-        }
+        .actuation-list li:hover { transform: translateX(10px); }
+        .actuation-list li i { transition: transform 0.2s ease; }
+        .actuation-list li:hover i { transform: scale(1.2); }
 
-        .actuation-list li i {
-            transition: transform 0.2s ease;
-        }
-
-        .actuation-list li:hover i {
-            transform: scale(1.2);
-        }
-
+        /* Notícias */
         .news {
             background: var(--branco);
-            padding: 80px 0;
+            padding: 90px 0;
         }
 
         .news-card-blog {
             background: linear-gradient(145deg, #fff, var(--vinho-suave));
-            border-radius: 40px;
-            padding: 48px;
+            border-radius: 48px;
+            padding: 55px;
             text-align: center;
             box-shadow: var(--shadow-sm);
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        .news-card-blog:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 45px -12px rgba(106, 27, 42, 0.2);
-        }
+        .news-card-blog:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
 
+        /* Contato */
         .contact-section {
-            padding: 80px 0;
+            padding: 90px 0;
             background: var(--cinza-claro);
         }
 
         .contact-flex {
             display: flex;
             flex-wrap: wrap;
-            gap: 55px;
+            gap: 60px;
         }
 
-        .contact-info {
-            flex: 1;
-            opacity: 0;
-            animation: fadeInLeft 0.8s ease forwards;
-        }
-
-        .contact-info h2 {
-            font-size: 2rem;
-            color: var(--vinho);
-        }
-
+        .contact-info { flex: 1; opacity: 0; animation: fadeInLeft 0.8s ease forwards; }
+        .contact-info h2 { font-size: 2.2rem; color: var(--vinho); margin-bottom: 20px; }
         .contact-details div {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 22px;
             transition: transform 0.2s ease;
         }
 
-        .contact-details div:hover {
-            transform: translateX(8px);
-        }
+        .contact-details div:hover { transform: translateX(8px); }
 
+        /* Footer */
         .footer {
             background: var(--vinho-escuro);
             color: #f0d8de;
-            padding: 44px 0;
+            padding: 50px 0;
             text-align: center;
         }
 
+        /* WhatsApp Float */
         .whatsapp-float {
             position: fixed;
             bottom: 28px;
             right: 28px;
             background: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 62px;
+            height: 62px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            font-size: 34px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
             z-index: 999;
             text-decoration: none;
             animation: pulse 2s ease-in-out infinite;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.12);
-            background: #128C7E;
-            animation: none;
-        }
+        .whatsapp-float:hover { transform: scale(1.12); background: #128C7E; animation: none; }
 
-        /* Responsividade aprimorada */
+        /* Responsividade */
         @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
+            .hero-content h1 { font-size: 2.8rem; }
         }
 
         @media (max-width: 900px) {
-            .navbar {
-                flex-direction: column;
-                gap: 18px;
-            }
-            .nav-links {
-                gap: 28px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            .container {
-                padding: 0 24px;
-            }
-            .sobre-grid {
-                flex-direction: column;
-            }
-            .hero-grid {
-                flex-direction: column;
-            }
+            .hero { padding: 120px 0 70px; }
+            .hero-content h1 { font-size: 2.3rem; }
+            .hero-grid { flex-direction: column; }
+            .sobre-grid { flex-direction: column; }
+            .container { padding: 0 24px; }
+            .section-header h2 { font-size: 2.2rem; }
         }
 
         @media (max-width: 550px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .section-header h2 {
-                font-size: 2rem;
-            }
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            .services-grid-list {
-                grid-template-columns: 1fr;
-            }
+            .cards-grid { grid-template-columns: 1fr; }
+            .hero-btn { width: 100%; justify-content: center; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .services-grid-list { grid-template-columns: 1fr; }
+            .news-card-blog { padding: 35px 25px; }
+            .hero-contact-card { padding: 24px; }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-            .hero-contact-card {
-                padding: 20px;
-            }
-            .service-card {
-                padding: 24px 20px;
-            }
-        }
-
-        /* Scroll reveal via CSS - elementos já visíveis, mas com animação */
-        .service-card, .service-item-list, .actuation-text, .contact-info, .news-card-blog {
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .service-card {
-            animation-name: fadeInUp;
-        }
-        .service-item-list {
-            animation-name: fadeInLeft;
-        }
-        .actuation-text, .contact-info {
-            animation-name: fadeInLeft;
-        }
-        .news-card-blog {
-            animation-name: fadeInUp;
+            .container { padding: 0 18px; }
+            .service-card { padding: 28px 20px; }
+            .sobre-texto h2 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -799,7 +630,10 @@
                 <h1>Hanatécia</h1>
                 <p>Contabilidade e Assessoria Tributária</p>
             </div>
-            <ul class="nav-links">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#atuacao">Atuação</a></li>
@@ -813,13 +647,13 @@
 <main>
     <section class="hero">
         <div class="container hero-grid">
-            <div class="hero-content animate-fade-left">
+            <div class="hero-content animate-left">
                 <div class="hero-badge">Excelência em gestão tributária</div>
                 <h1>Soluções contábeis <span>com precisão</span> e agilidade</h1>
                 <p>Oferecemos soluções contábeis completas para sua empresa, com profissionais experientes e tecnologia moderna. Acompanhe nosso blog para ficar por dentro das principais novidades fiscais.</p>
                 <a href="#contato" class="hero-btn">Fale com a Hanatécia <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="hero-contact-card animate-fade-right">
+            <div class="hero-contact-card animate-right">
                 <h3>Atendimento direto</h3>
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i> <span>(61) 99215-1553</span>
@@ -836,14 +670,14 @@
 
     <section id="sobre" class="sobre">
         <div class="container sobre-grid">
-            <div class="sobre-imagem animate-fade-left">
+            <div class="sobre-imagem animate-left">
                 <img src="assets/contadora-hanatecia.jpg" alt="Hanatécia Contadora" onerror="this.src='https://placehold.co/600x500/6a1b2a/white?text=Foto+Hanat%C3%A9cia'; this.style.objectFit='cover';">
             </div>
-            <div class="sobre-texto animate-fade-right">
+            <div class="sobre-texto animate-right">
                 <h2>Sobre Hanatécia</h2>
                 <p>Hanatécia é contadora com mais de 12 anos de experiência em assessoria tributária, gestão fiscal e consultoria empresarial. Formada em Ciências Contábeis e pós-graduada em Direito Tributário, ela construiu uma trajetória baseada em ética, transparência e compromisso com resultados.</p>
                 <p>Sua abordagem combina conhecimento técnico profundo com um olhar humano para cada cliente, garantindo soluções personalizadas que vão desde a abertura de empresas até a gestão contábil de cooperativas. Para Hanatécia, contabilidade não é apenas cumprir obrigações, mas gerar valor e tranquilidade para negócios.</p>
-                <div class="assinatura">“Sua confiança é o que move nosso trabalho.” — Hanatécia</div>
+                <div class="assinatura">"Sua confiança é o que move nosso trabalho." — Hanatécia</div>
             </div>
         </div>
     </section>
@@ -887,18 +721,18 @@
         <div class="container">
             <h2>Serviços Contábeis</h2>
             <div class="services-grid-list">
-                <div class="service-item-list" style="--i:1"><i class="fas fa-check-circle"></i> <span>Abertura de Empresa</span></div>
-                <div class="service-item-list" style="--i:2"><i class="fas fa-check-circle"></i> <span>Declaração de Imposto</span></div>
-                <div class="service-item-list" style="--i:3"><i class="fas fa-check-circle"></i> <span>Auditoria Fiscal</span></div>
-                <div class="service-item-list" style="--i:4"><i class="fas fa-check-circle"></i> <span>Consultoria Contábil</span></div>
-                <div class="service-item-list" style="--i:5"><i class="fas fa-check-circle"></i> <span>Serviço Paralegal</span></div>
-                <div class="service-item-list" style="--i:6"><i class="fas fa-check-circle"></i> <span>E-Social Doméstico</span></div>
-                <div class="service-item-list" style="--i:7"><i class="fas fa-check-circle"></i> <span>Imposto de Renda Pessoa Física</span></div>
-                <div class="service-item-list" style="--i:8"><i class="fas fa-check-circle"></i> <span>Malha Fiscal</span></div>
-                <div class="service-item-list" style="--i:9"><i class="fas fa-check-circle"></i> <span>Notificação de Lançamento ou Intimação de Comprovação de Documentos</span></div>
-                <div class="service-item-list" style="--i:10"><i class="fas fa-check-circle"></i> <span>Carne Leão</span></div>
-                <div class="service-item-list" style="--i:11"><i class="fas fa-check-circle"></i> <span>Soluções Contábeis para Cooperativas de Serviços</span></div>
-                <div class="service-item-list" style="--i:12"><i class="fas fa-check-circle"></i> <span>Gestão Contábil Especializada para Cooperativas de Trabalho</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Abertura de Empresa</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Declaração de Imposto</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Auditoria Fiscal</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Consultoria Contábil</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Serviço Paralegal</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>E-Social Doméstico</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Imposto de Renda Pessoa Física</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Malha Fiscal</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Notificação de Lançamento ou Intimação</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Carne Leão</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Soluções para Cooperativas de Serviços</span></div>
+                <div class="service-item-list"><i class="fas fa-check-circle"></i> <span>Gestão para Cooperativas de Trabalho</span></div>
             </div>
         </div>
     </section>
@@ -916,10 +750,10 @@
                     <li><i class="fas fa-check-circle" style="color:var(--vinho)"></i> Agronegócio e Tecnologia</li>
                 </ul>
             </div>
-            <div style="flex:0.8; background: white; border-radius: 32px; padding: 36px; text-align:center; box-shadow: var(--shadow-sm); transition: all 0.3s ease;">
-                <i class="fas fa-chart-pie" style="font-size: 52px; color: var(--vinho); margin-bottom: 20px;"></i>
-                <h3 style="color: var(--vinho);">+12 anos de experiência</h3>
-                <p style="margin-top: 14px;">Atuação segura e estratégica em todo território nacional.</p>
+            <div style="flex:0.8; background: white; border-radius: 32px; padding: 40px; text-align:center; box-shadow: var(--shadow-lg); transition: all 0.4s ease;">
+                <i class="fas fa-chart-pie" style="font-size: 56px; color: var(--vinho); margin-bottom: 20px;"></i>
+                <h3 style="color: var(--vinho); font-size: 1.6rem;">+12 anos</h3>
+                <p>de experiência e atuação estratégica em todo território nacional.</p>
             </div>
         </div>
     </section>
@@ -927,10 +761,10 @@
     <section id="noticias" class="news">
         <div class="container">
             <div class="news-card-blog">
-                <i class="fas fa-newspaper" style="font-size: 48px; color: var(--vinho); margin-bottom: 16px; display: inline-block;"></i>
-                <h2 style="font-size: 2rem; color: var(--vinho);">Notícias e Conteúdos</h2>
-                <p style="max-width: 600px; margin: 16px auto;">Acompanhe análises, atualizações fiscais e artigos do mundo contábil. Acesse nosso blog e fique por dentro das principais novidades do setor.</p>
-                <a href="blog.html" class="hero-btn" style="background: var(--vinho); margin-top: 16px; display: inline-flex;">Acessar Blog <i class="fas fa-arrow-right"></i></a>
+                <i class="fas fa-newspaper" style="font-size: 56px; color: var(--vinho); margin-bottom: 20px;"></i>
+                <h2 style="font-size: 2.2rem; color: var(--vinho);">Notícias e Conteúdos</h2>
+                <p style="max-width: 600px; margin: 20px auto;">Acompanhe análises, atualizações fiscais e artigos do mundo contábil. Acesse nosso blog e fique por dentro das principais novidades do setor.</p>
+                <a href="blog.html" class="hero-btn" style="background: var(--vinho); margin-top: 20px; display: inline-flex;">Acessar Blog <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -939,19 +773,18 @@
         <div class="container contact-flex">
             <div class="contact-info">
                 <h2>Entre em Contato</h2>
-                <p style="margin: 20px 0;">Envie sua mensagem ou fale diretamente com a contadora Hanatécia. Respondemos em até 2 horas úteis.</p>
+                <p style="margin: 20px 0;">Envie sua mensagem ou fale diretamente com a contadora Hanatécia.</p>
                 <div class="contact-details">
-                    <div style="display:flex; align-items:center; gap:14px; margin-bottom: 20px;"><i class="fab fa-whatsapp" style="font-size:26px; color:var(--vinho);"></i> <span>(61) 99215-1553</span></div>
-                    <div style="display:flex; align-items:center; gap:14px; margin-bottom: 20px;"><i class="fas fa-envelope" style="font-size:22px; color:var(--vinho);"></i> <span>hanatecia@outlook.com</span></div>
-                    <div style="display:flex; align-items:center; gap:14px; margin-bottom: 30px;"><i class="fas fa-clock" style="font-size:22px; color:var(--vinho);"></i> <span>Segunda a Sexta, 9h às 18h</span></div>
+                    <div><i class="fab fa-whatsapp" style="font-size: 28px; color:var(--vinho);"></i> <span>(61) 99215-1553</span></div>
+                    <div><i class="fas fa-envelope" style="font-size: 24px; color:var(--vinho);"></i> <span>hanatecia@outlook.com</span></div>
+                    <div><i class="fas fa-clock" style="font-size: 24px; color:var(--vinho);"></i> <span>Segunda a Sexta, 9h às 18h</span></div>
                 </div>
-                <a href="https://wa.me/5561992151553?text=Olá%20Hanatécia,%20gostaria%20de%20informações%20sobre%20serviços%20contábeis" target="_blank" class="hero-btn" style="background: #25D366; display: inline-flex; gap: 12px;"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+                <a href="https://wa.me/5561992151553?text=Olá%20Hanatécia,%20gostaria%20de%20informações%20sobre%20serviços%20contábeis" target="_blank" class="hero-btn" style="background: #25D366; margin-top: 20px; display: inline-flex;"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
             </div>
-            <div style="flex:1; background: white; border-radius: 32px; padding: 32px; text-align: center; border: 1px solid var(--cinza-borda); transition: all 0.3s ease;">
-                <i class="fas fa-map-pin" style="font-size: 44px; color: var(--vinho); margin-bottom: 18px;"></i>
+            <div style="flex:1; background: white; border-radius: 32px; padding: 40px; text-align: center; border: 1px solid var(--cinza-borda); transition: all 0.3s ease;">
+                <i class="fas fa-map-pin" style="font-size: 48px; color: var(--vinho); margin-bottom: 20px;"></i>
                 <h3>Atendimento</h3>
                 <p>Brasília - DF<br>Agendamento necessário</p>
-                <img src="assets/mapa-ilustrativo.png" alt="Localização" style="width:100%; max-width:200px; margin-top:20px; opacity:0.7;" onerror="this.style.display='none'">
             </div>
         </div>
     </section>
@@ -960,7 +793,7 @@
 <footer class="footer">
     <div class="container">
         <p>© 2026 Hanatécia Contabilidade e Assessoria Tributária. Todos os direitos reservados.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">CNPJ em fase de registro | Contadora responsável: Hanatécia</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">CNPJ em fase de registro | Contadora responsável: Hanatécia</p>
     </div>
 </footer>
 
@@ -969,6 +802,37 @@
 </a>
 
 <script>
+    // Menu Mobile Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuToggle?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // Scroll suave para links internos
     document.querySelectorAll('.nav-links a, .hero-btn, .card-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -981,12 +845,6 @@
                 }
             }
         });
-    });
-
-    // Adicionar delay incremental para os itens da lista de serviços
-    const items = document.querySelectorAll('.service-item-list');
-    items.forEach((item, index) => {
-        item.style.animationDelay = `${0.05 + index * 0.03}s`;
     });
 </script>
 </body>
