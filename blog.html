@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Blog | Hanatécia Contabilidade - Notícias e Conteúdos Contábeis</title>
-    <meta name="description" content="Blog da Hanatécia Contabilidade: notícias atualizadas sobre Reforma Tributária, Imposto de Renda, INSS, abertura de empresas e legislação contábil.">
+    <meta name="description" content="Blog da Hanatécia Contabilidade: notícias atualizadas sobre Reforma Tributária, Imposto de Renda, INSS, abertura de empresas e legislação contábil. Conteúdo completo e gratuito.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -48,7 +48,6 @@
             --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
         }
 
-        /* HEADER */
         .header {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(8px);
@@ -117,7 +116,6 @@
             color: var(--vinho);
         }
 
-        /* BLOG HEADER */
         .blog-header {
             background: linear-gradient(125deg, #fffef9 0%, var(--vinho-suave) 100%);
             padding: 60px 0 50px;
@@ -137,7 +135,6 @@
             margin: 0 auto;
         }
 
-        /* BLOG GRID */
         .blog-grid {
             padding: 70px 0;
             background: var(--branco);
@@ -224,7 +221,6 @@
             font-size: 0.85rem;
         }
 
-        /* POST COMPLETO (SINGLE) */
         .single-post {
             padding: 60px 0;
             background: var(--branco);
@@ -283,15 +279,6 @@
             margin-bottom: 8px;
         }
 
-        .premium-box {
-            background: linear-gradient(135deg, #fff8e7, #fff0d6);
-            border-left: 4px solid var(--vinho);
-            padding: 24px;
-            border-radius: 20px;
-            margin: 30px 0;
-        }
-
-        /* FOOTER */
         .footer {
             background: var(--vinho-escuro);
             color: #f0d8de;
@@ -366,15 +353,13 @@
 </header>
 
 <main id="blog-app">
-    <!-- LISTAGEM DE POSTS -->
     <div id="blog-list">
         <div class="blog-header">
             <div class="container">
                 <h1>Blog da Hanatécia</h1>
-                <p>Notícias atualizadas, análises fiscais e conteúdos exclusivos sobre contabilidade, impostos e gestão empresarial.</p>
+                <p>Notícias atualizadas, análises fiscais e conteúdos completos sobre contabilidade, impostos e gestão empresarial. Todo o material é gratuito e produzido com exclusividade.</p>
             </div>
         </div>
-
         <div class="blog-grid">
             <div class="container">
                 <div class="posts-grid" id="posts-container"></div>
@@ -382,7 +367,6 @@
         </div>
     </div>
 
-    <!-- POST INDIVIDUAL (inicialmente escondido) -->
     <div id="single-post" style="display: none;">
         <div class="single-post">
             <div class="container post-container">
@@ -400,12 +384,11 @@
     </div>
 </footer>
 
-<a href="https://wa.me/5561992151553?text=Olá%20Hanatécia,%20gostaria%20de%20informações%20sobre%20serviços%20contábeis" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+<a href="https://wa.me/5561992151553?text=Ol%C3%A1%20Hanat%C3%A9cia,%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20servi%C3%A7os%20cont%C3%A1beis" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
-    // DADOS DOS POSTS (baseado nas matérias enviadas)
     const posts = [
         {
             id: 1,
@@ -426,11 +409,7 @@
                     <li><strong>Ascensão do papel consultivo:</strong> O foco deixa de ser o preenchimento de formulários e passa a ser a inteligência de negócio.</li>
                 </ul>
                 <p>Essas transformações demandam uma postura proativa. O mercado agora valoriza o profissional que não apenas reage às mudanças, mas que se antecipa a elas, preparando o terreno para que seus clientes atravessem a transição com segurança e eficiência.</p>
-                <div class="premium-box">
-                    <i class="fas fa-star" style="color: var(--vinho); margin-right: 8px;"></i> <strong>Conteúdo exclusivo para assinantes</strong><br>
-                    Acesso a guias completos, navegação sem anúncios e materiais premium. Consulte nossa equipe para mais informações.
-                </div>
-                <p><strong>Conclusão:</strong> Preparar-se para essa nova era exige um acompanhamento rigoroso das etapas de implementação e um investimento pesado em educação continuada. Quem se antecipar não apenas sobreviverá à mudança, mas se consolidará como agente essencial na nova economia brasileira.</p>
+                <p><strong>Conclusão:</strong> Preparar-se para essa nova era exige um acompanhamento rigoroso das etapas de implementação e um investimento pesado em educação continuada. Quem se antecipar não apenas sobreviverá à mudança, mas se consolidará como agente essencial na nova economia brasileira, transformando a complexidade fiscal em uma vantagem estratégica para seus parceiros de negócios.</p>
             `,
             imageIcon: "fas fa-chart-line"
         },
@@ -443,15 +422,16 @@
             fullContent: `
                 <p>O cenário contábil brasileiro é reconhecido por sua dinâmica intensa, exigindo que profissionais e gestores de escritórios mantenham uma vigilância constante sobre o fluxo legislativo.</p>
                 <p>Com a chegada de 2026, essa atenção precisa ser redobrada: estamos diante de um ciclo de reestruturações profundas que prometem transformar a rotina operacional e estratégica do setor com a Reforma Tributária.</p>
+                <p>Além das discussões sobre conquistas históricas para a categoria — como a viabilização das férias fiscais —, diversos Projetos de Lei avançam no Congresso Nacional com potencial para alterar obrigações e processos fundamentais. Estar atualizado não é mais um diferencial, mas uma condição de sobrevivência e conformidade.</p>
                 <h3>Projetos de Lei que impactam a contabilidade</h3>
                 <ul>
-                    <li><strong>Aumento do limite de faturamento do MEI e Simples Nacional (PLP 108/2021):</strong> Proposta eleva o limite do MEI para R$ 130 mil e permite contratação de até 2 funcionários.</li>
-                    <li><strong>Reforma Tributária (Lei Complementar nº 214/2025):</strong> Institui o IBS e a CBS, alterando drasticamente a apuração fiscal.</li>
-                    <li><strong>Piso Salarial do Contador no Serviço Público (PL 1645/2022):</strong> Visa estabelecer piso nacional para contadores da administração pública.</li>
-                    <li><strong>Inviolabilidade do escritório contábil (PL 1633/2022):</strong> Garante proteção aos dados e à privacidade dos clientes.</li>
-                    <li><strong>Férias fiscais para o contador (PLP 116/2021):</strong> Suspende prazos de obrigações acessórias entre 20 de dezembro e 20 de janeiro.</li>
+                    <li><strong>Aumento do limite de faturamento do MEI e Simples Nacional (PLP 108/2021):</strong> Proposta eleva o limite do MEI para R$ 130 mil e permite contratação de até 2 funcionários. O projeto já foi aprovado no Senado e aguarda votação na Câmara.</li>
+                    <li><strong>Reforma Tributária (Lei Complementar nº 214/2025):</strong> Institui o IBS e a CBS, alterando drasticamente a apuração fiscal. A substituição dos impostos segue cronograma gradual de implementação.</li>
+                    <li><strong>Piso Salarial do Contador no Serviço Público (PL 1645/2022):</strong> Visa estabelecer piso nacional para contadores da administração pública, com valor proposto em torno de R$ 4.631 para jornada de 8 horas.</li>
+                    <li><strong>Inviolabilidade do escritório contábil (PL 1633/2022):</strong> Garante proteção aos dados e à privacidade dos clientes, assegurando que o Estado continue arrecadando tributos sem comprometer informações de quem não é alvo de investigação.</li>
+                    <li><strong>Férias fiscais para o contador (PLP 116/2021):</strong> Suspende prazos de obrigações acessórias e processos administrativos entre 20 de dezembro e 20 de janeiro, um dos temas centrais de mobilização das entidades contábeis para 2026.</li>
                 </ul>
-                <p>Acompanhar esses projetos é essencial para o planejamento estratégico dos escritórios de contabilidade em 2026.</p>
+                <p>Acompanhar esses projetos é essencial para o planejamento estratégico dos escritórios de contabilidade em 2026. A matéria ganhou força e merece toda a atenção do setor.</p>
             `,
             imageIcon: "fas fa-gavel"
         },
@@ -463,15 +443,16 @@
             excerpt: "Estado avança na digitalização, mas custos de abertura ainda variam conforme a natureza jurídica do negócio.",
             fullContent: `
                 <p>O Amapá tem se posicionado como uma fronteira de oportunidades na Região Norte, atraindo empreendedores interessados na proximidade com o mercado caribenho e europeu via Guiana Francesa.</p>
-                <p>Neste ano, o cenário amapaense é marcado pela modernização: a Junta Comercial do Estado do Amapá (JUCAP) consolidou o registro digital, reduzindo drasticamente o tempo de espera.</p>
+                <p>Neste ano, o cenário amapaense é marcado pela modernização: a Junta Comercial do Estado do Amapá (JUCAP) consolidou o registro digital, reduzindo drasticamente o tempo de espera. Contudo, o custo inicial permanece como o principal filtro na escolha da estrutura jurídica ideal.</p>
+                <p>Diferente de outros estados, o Amapá opera com fortes incentivos em áreas de livre comércio, mas mantém exigências rigorosas de licenciamento para garantir o desenvolvimento sustentável da região amazônica. O sistema "Empresa Fácil Amapá" permite que negócios de baixo risco sejam abertos de forma totalmente online.</p>
                 <h3>Custos de abertura para empresas</h3>
                 <ul>
                     <li><strong>MEI:</strong> Isento de taxa de abertura. DAS mensal entre R$ 81 e R$ 87.</li>
-                    <li><strong>EI (Individual):</strong> Taxa JUCAP ~R$ 145 + Certificado Digital R$ 140-R$ 250.</li>
-                    <li><strong>LTDA:</strong> Taxa JUCAP ~R$ 380 + certificado digital.</li>
-                    <li><strong>S/A Fechada:</strong> Taxa JUCAP ~R$ 720 + publicações legais acima de R$ 1.500.</li>
+                    <li><strong>EI (Individual):</strong> Taxa JUCAP ~R$ 145 + Certificado Digital R$ 140 a R$ 250.</li>
+                    <li><strong>LTDA:</strong> Taxa JUCAP ~R$ 380 + certificado digital + taxas municipais em Macapá a partir de R$ 490.</li>
+                    <li><strong>S/A Fechada:</strong> Taxa JUCAP ~R$ 720 + publicações legais acima de R$ 1.500 anuais.</li>
                 </ul>
-                <p>O segredo do sucesso no estado é realizar a consulta prévia de viabilidade antes de qualquer desembolso.</p>
+                <p>Para Microempresas (EI e LTDA), o investimento inicial fica entre R$ 800 e R$ 1.700. O segredo do sucesso no estado é realizar a consulta prévia de viabilidade antes de qualquer desembolso, garantindo que o local escolhido esteja em conformidade com as normas municipais e ambientais.</p>
             `,
             imageIcon: "fas fa-building"
         },
@@ -482,11 +463,13 @@
             date: "03 de abril de 2026",
             excerpt: "Profissionais que trabalham em home office e pagam aluguel podem deduzir até 20% das despesas da residência.",
             fullContent: `
-                <p>O trabalho em home office passou a fazer parte da realidade de milhares de profissionais autônomos no Brasil. O que muitos podem ainda não saber é que trabalhar em casa pode trazer vantagens fiscais.</p>
+                <p>O trabalho em home office passou a fazer parte da realidade de milhares de profissionais autônomos no Brasil. O que muitos podem ainda não saber é que trabalhar em casa pode trazer vantagens fiscais, especialmente para quem paga aluguel e recebe rendimentos de pessoas físicas.</p>
                 <p>A legislação da Receita Federal permite que parte das despesas da residência, quando ela também funciona como local de trabalho, seja usada para diminuir a base de cálculo do imposto mensal no Carnê-Leão Web.</p>
                 <h3>Como funciona essa dedução</h3>
-                <p>A Receita Federal permite considerar como dedutíveis até 20% das despesas da residência, desde que o imóvel seja utilizado como local de trabalho e seja alugado. Entram no cálculo gastos como condomínio, IPTU, aluguel, energia, internet e água.</p>
-                <p>Para que a dedução seja válida, é essencial manter a documentação em dia e o contrato de locação no nome do contribuinte.</p>
+                <p>O mecanismo não significa que o profissional receba um reembolso direto do valor do aluguel. Trata-se de uma dedução das despesas necessárias à atividade, que reduz o rendimento tributável e, por consequência, o imposto pago mês a mês.</p>
+                <p>A Receita Federal permite considerar como dedutíveis até 20% das despesas da residência, desde que o imóvel seja utilizado como local de trabalho e seja alugado. Entram no cálculo gastos como condomínio, IPTU, aluguel, energia, internet e água, todos vinculados ao endereço onde a atividade é exercida.</p>
+                <p>Para que a dedução seja válida, algumas condições precisam ser seguidas: o imóvel deve ser alugado (não próprio), os comprovantes devem ser guardados, o contrato de locação precisa estar em nome do contribuinte, e apenas 20% das despesas residenciais podem ser considerados.</p>
+                <p>A ideia de "dinheiro de volta" em relação ao aluguel se refere indiretamente aos efeitos das deduções sobre o imposto de renda. Ao diminuir a base de cálculo mês a mês, o imposto recolhido pode ficar abaixo do que seria devido sem os abatimentos, gerando uma possível restituição nas próximas declarações.</p>
             `,
             imageIcon: "fas fa-home"
         },
@@ -497,13 +480,15 @@
             date: "02 de abril de 2026",
             excerpt: "O custo do erro aumenta com o novo modelo de apuração baseado em crédito e débito interligado entre empresas.",
             fullContent: `
-                <p>A reforma tributária reorganiza o sistema brasileiro ao substituir tributos como PIS, Cofins, ICMS e ISS por dois impostos principais: CBS e IBS.</p>
-                <p>O ponto central dessa mudança não está apenas na redução de regras, mas no funcionamento do sistema. O novo modelo exige que cada operação esteja corretamente registrada e vinculada à cadeia de transações.</p>
+                <p>A reforma tributária reorganiza o sistema brasileiro ao substituir tributos como PIS, Cofins, ICMS e ISS por dois impostos principais: CBS, de competência federal, e IBS, compartilhado entre estados e municípios. A proposta simplifica a estrutura normativa, mas altera de forma relevante a forma como o imposto será apurado e validado dentro das empresas.</p>
+                <p>O ponto central dessa mudança não está apenas na redução de regras, mas no funcionamento do sistema. O novo modelo passa a exigir que cada operação realizada pela empresa esteja corretamente registrada, classificada e vinculada à cadeia de transações que a originou. Isso ocorre porque o direito ao crédito tributário passa a depender diretamente da consistência dessas informações.</p>
                 <h3>Como funciona a apuração no modelo IBS/CBS</h3>
-                <p>Quando a empresa realiza uma venda, gera um débito tributário. Quando adquire insumos, gera créditos. Esses créditos só são reconhecidos quando a operação está corretamente documentada.</p>
-                <p>Isso cria uma dependência direta entre empresas. O crédito de quem compra depende da informação declarada por quem vende.</p>
+                <p>No novo sistema, o imposto devido não será apenas resultado da aplicação de uma alíquota sobre a receita. Ele passa a depender da relação entre débitos e créditos gerados ao longo das operações.</p>
+                <p>Quando a empresa realiza uma venda, gera um débito tributário. Quando contrata serviços ou adquire insumos, pode gerar créditos. Esses créditos só são reconhecidos quando a operação que os originou está corretamente documentada, classificada e validada dentro do sistema.</p>
+                <p>Isso cria uma dependência direta entre empresas. O crédito de quem compra passa a depender da informação declarada por quem vende. Se houver erro na emissão da nota, divergência de classificação ou inconsistência cadastral, o crédito deixa de ser reconhecido.</p>
                 <h3>O que muda na fiscalização</h3>
-                <p>Com a padronização das informações, o sistema identifica divergências de forma automatizada, reduzindo a dependência de auditorias pontuais.</p>
+                <p>Com a padronização e digitalização das informações, o sistema passa a identificar divergências de forma automatizada. Isso reduz a dependência de auditorias pontuais e amplia a capacidade de monitoramento contínuo. O Regime Especial de Fiscalização por até 360 dias ganha relevância prática, podendo ocorrer a partir de indícios como inconsistência de dados ou falhas recorrentes.</p>
+                <p>A contabilidade passa a atuar na estrutura da operação, não apenas no fechamento. O trabalho de validar registros, revisar classificações e garantir consistência antes que a informação entre no sistema torna-se essencial para evitar perda de crédito e aumento da exposição fiscal.</p>
             `,
             imageIcon: "fas fa-search"
         },
@@ -515,9 +500,11 @@
             excerpt: "Agências fecham em todo o país e depósitos de benefícios serão retomados na segunda-feira, 6 de abril.",
             fullContent: `
                 <p>Os segurados do Instituto Nacional do Seguro Social (INSS) devem ficar atentos ao calendário da Semana Santa. Devido ao feriado nacional da Sexta-feira Santa, o órgão confirmou a suspensão dos pagamentos e do atendimento presencial em todas as suas agências no dia 3 de abril.</p>
-                <p>As unidades de atendimento reabrem as portas apenas na segunda-feira (6). O cronograma de depósitos também sofre um breve intervalo: os beneficiários que recebem até um salário mínimo e possuem cartão com final 8 terão os valores liberados na segunda-feira.</p>
+                <p>A paralisação afeta aposentadorias, pensões, auxílios e o Benefício de Prestação Continuada (BPC). As unidades de atendimento funcionam normalmente até quinta-feira (2) e reabrem as portas apenas na segunda-feira (6).</p>
+                <p>O cronograma de depósitos também sofre um breve intervalo: os beneficiários que recebem até um salário mínimo e possuem cartão com final 8 terão os valores liberados na segunda-feira. Para quem recebe acima do piso nacional, os pagamentos para os finais 3 e 8 também começam na mesma data.</p>
                 <h3>Canais digitais</h3>
-                <p>A plataforma Meu INSS permanece ativa 24 horas por dia, permitindo o envio de solicitações de benefícios, consulta de extratos e agendamentos. A Central 135 terá atendimento eletrônico na sexta e retoma atendimento humano no sábado.</p>
+                <p>Apesar do fechamento das agências físicas, o INSS reforça que os cidadãos não ficarão totalmente desassistidos. A plataforma Meu INSS (disponível via aplicativo e site) permanece ativa 24 horas por dia, permitindo o envio de solicitações de benefícios, consulta de extratos e agendamentos.</p>
+                <p>Já a Central 135 terá um esquema especial de funcionamento. Na sexta-feira, o atendimento será estritamente eletrônico. O suporte humano será retomado no sábado (4), operando no horário habitual, das 7h às 22h. Vale lembrar que a ligação para o canal é gratuita quando feita de telefones fixos.</p>
             `,
             imageIcon: "fas fa-calendar-alt"
         }
@@ -547,7 +534,6 @@
             </div>
         `).join('');
 
-        // Adicionar eventos
         document.querySelectorAll('.post-card, .read-more').forEach(el => {
             el.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -576,7 +562,7 @@
                 <div class="single-content">
                     ${post.fullContent}
                     <hr style="margin: 40px 0 20px; border-color: var(--cinza-borda);">
-                    <p style="font-size: 0.9rem; color: #666;"><i class="fas fa-share-alt"></i> Compartilhe este conteúdo com seus contatos. Para mais informações, entre em contato com nossa equipe.</p>
+                    <p style="font-size: 0.9rem; color: #666;"><i class="fas fa-share-alt"></i> Compartilhe este conteúdo com seus contatos. Para mais informações sobre nossos serviços, entre em contato com nossa equipe.</p>
                 </div>
             `;
             listDiv.style.display = 'none';
@@ -597,7 +583,6 @@
         }
     }
 
-    // Configurar back button
     document.addEventListener('DOMContentLoaded', () => {
         renderList();
         
@@ -609,7 +594,6 @@
             });
         }
 
-        // Verificar se há hash na URL para abrir post específico
         if (window.location.hash && window.location.hash.includes('post=')) {
             const id = parseInt(window.location.hash.split('=')[1]);
             if (!isNaN(id)) showPost(id);
