@@ -30,6 +30,7 @@
         }
 
         .container {
+            width: 100%;
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 32px;
@@ -70,6 +71,7 @@
             50% { transform: scale(1.1); opacity: 0.3; }
         }
 
+        /* ===== HEADER REFATORADO ===== */
         .header {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
@@ -87,23 +89,36 @@
             justify-content: space-between;
             align-items: center;
             padding: 16px 0;
+            gap: 20px;
         }
 
+        .logo {
+            flex-shrink: 0;
+        }
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--vinho);
             letter-spacing: -0.5px;
             transition: transform 0.3s ease;
+            line-height: 1.2;
         }
-
         .logo h1:hover { transform: scale(1.02); }
-        .logo p { font-size: 0.7rem; color: #6a6a6a; letter-spacing: 0.6px; font-weight: 500; text-transform: uppercase; }
+        .logo p { 
+            font-size: 0.7rem; 
+            color: #6a6a6a; 
+            letter-spacing: 0.6px; 
+            font-weight: 500; 
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
 
         .nav-links {
             display: flex;
             gap: 42px;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
@@ -113,6 +128,7 @@
             transition: color 0.3s ease;
             font-size: 0.95rem;
             position: relative;
+            font-family: 'Inter', sans-serif;
         }
 
         .nav-links a::after {
@@ -137,39 +153,54 @@
             color: var(--vinho);
             cursor: pointer;
             transition: transform 0.2s ease;
+            width: 44px;
+            height: 44px;
+            border-radius: 30px;
+            align-items: center;
+            justify-content: center;
         }
+        .menu-toggle:hover { transform: scale(1.05); background: rgba(106,27,42,0.05); }
 
-        .menu-toggle:hover { transform: scale(1.05); }
-
+        /* MOBILE MENU */
         @media (max-width: 900px) {
-            .menu-toggle { display: block; }
+            .menu-toggle { display: flex; }
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: -100%;
-                width: 80%;
-                max-width: 320px;
-                height: calc(100vh - 70px);
+                width: min(80%, 320px);
+                height: calc(100vh - 80px);
                 background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(12px);
+                backdrop-filter: blur(16px);
                 flex-direction: column;
-                padding: 40px 32px;
+                padding: 40px 28px;
                 gap: 28px;
-                box-shadow: 4px 0 30px rgba(0, 0, 0, 0.1);
+                box-shadow: 8px 0 30px rgba(0, 0, 0, 0.08);
                 transition: left 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
                 z-index: 999;
                 border-right: 1px solid var(--cinza-borda);
+                overflow-y: auto;
             }
             .nav-links.active { left: 0; }
-            .nav-links a { font-size: 1.1rem; }
+            .nav-links a { 
+                font-size: 1.2rem; 
+                font-weight: 500;
+                display: block;
+                padding: 8px 0;
+                border-bottom: 1px solid transparent;
+            }
+            .nav-links a::after { display: none; }
+            .nav-links a:hover { border-bottom-color: var(--vinho); width: fit-content; }
         }
 
+        /* BLOG HEADER */
         .blog-header {
             background: linear-gradient(135deg, #fffef9 0%, var(--vinho-suave) 100%);
-            padding: 120px 0 60px;
+            padding: 140px 0 70px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            margin-top: 0;
         }
 
         .blog-header::before {
@@ -205,6 +236,7 @@
             animation: fadeInUp 0.8s ease 0.2s forwards;
         }
 
+        /* BLOG GRID */
         .blog-grid {
             padding: 80px 0;
             background: var(--branco);
@@ -305,6 +337,7 @@
             margin-bottom: 16px;
             display: flex;
             gap: 18px;
+            flex-wrap: wrap;
         }
 
         .post-excerpt {
@@ -330,9 +363,11 @@
             color: var(--vinho-escuro);
         }
 
+        /* SINGLE POST */
         .single-post {
-            padding: 100px 0 70px;
+            padding: 120px 0 80px;
             background: var(--branco);
+            min-height: 70vh;
         }
 
         .post-container {
@@ -372,6 +407,9 @@
             border-bottom: 1px solid var(--cinza-borda);
             opacity: 0;
             animation: fadeInUp 0.6s ease 0.1s forwards;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .single-content {
@@ -405,6 +443,18 @@
             transform: translateX(6px);
         }
 
+        .single-content strong {
+            color: var(--vinho-escuro);
+        }
+
+        hr {
+            margin: 40px 0 20px;
+            border: none;
+            height: 1px;
+            background: var(--cinza-borda);
+        }
+
+        /* FOOTER */
         .footer {
             background: var(--vinho-escuro);
             color: #f0d8de;
@@ -438,27 +488,37 @@
             animation: none;
         }
 
+        /* RESPONSIVIDADE */
         @media (max-width: 1024px) {
-            .blog-header h1 { font-size: 2.6rem; }
+            .blog-header h1 { font-size: 2.8rem; }
+            .container { padding: 0 28px; }
         }
 
         @media (max-width: 900px) {
-            .blog-header { padding: 100px 0 50px; }
-            .blog-header h1 { font-size: 2.2rem; }
-            .container { padding: 0 24px; }
+            .blog-header { padding: 120px 0 50px; }
+            .blog-header h1 { font-size: 2.4rem; }
+            .single-title { font-size: 2rem; }
         }
 
         @media (max-width: 768px) {
             .posts-grid { grid-template-columns: 1fr; gap: 35px; }
-            .single-title { font-size: 1.8rem; }
-            .post-content { padding: 24px; }
+            .post-content { padding: 28px; }
+            .single-post { padding: 100px 0 60px; }
+        }
+
+        @media (max-width: 680px) {
+            .blog-header h1 { font-size: 2rem; }
+            .blog-header p { font-size: 1rem; }
+            .post-content h2 { font-size: 1.3rem; }
         }
 
         @media (max-width: 550px) {
-            .blog-header { padding: 90px 0 40px; }
+            .container { padding: 0 20px; }
+            .blog-header { padding: 110px 0 45px; }
             .blog-header h1 { font-size: 1.8rem; }
-            .blog-header p { font-size: 0.95rem; }
-            .container { padding: 0 18px; }
+            .single-title { font-size: 1.6rem; }
+            .single-content { font-size: 0.98rem; }
+            .post-meta { gap: 12px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -487,6 +547,7 @@
 </header>
 
 <main id="blog-app">
+    <!-- LISTAGEM DE POSTS -->
     <div id="blog-list">
         <div class="blog-header">
             <div class="container">
@@ -501,6 +562,7 @@
         </div>
     </div>
 
+    <!-- POST INDIVIDUAL -->
     <div id="single-post" style="display: none;">
         <div class="single-post">
             <div class="container post-container">
@@ -523,6 +585,7 @@
 </a>
 
 <script>
+    // Dados dos posts
     const posts = [
         {
             id: 1,
@@ -640,7 +703,7 @@
         const container = document.getElementById('posts-container');
         if (!container) return;
         
-        container.innerHTML = posts.map((post) => `
+        container.innerHTML = posts.map(post => `
             <div class="post-card" data-id="${post.id}">
                 <div class="post-image">
                     <i class="${post.imageIcon}" style="font-size: 48px; color: var(--vinho); transition: all 0.3s ease;"></i>
@@ -658,10 +721,12 @@
             </div>
         `).join('');
 
+        // Eventos para abrir post
         document.querySelectorAll('.post-card, .read-more').forEach(el => {
             el.addEventListener('click', (e) => {
                 e.preventDefault();
-                const id = el.closest('.post-card')?.dataset.id || el.dataset.id;
+                const card = el.closest('.post-card');
+                const id = card ? card.dataset.id : el.dataset.id;
                 if (id) showPost(parseInt(id));
             });
         });
@@ -679,13 +744,13 @@
             singleWrapper.innerHTML = `
                 <h1 class="single-title">${post.title}</h1>
                 <div class="single-meta">
-                    <span><i class="far fa-calendar-alt"></i> ${post.date}</span> | 
-                    <span><i class="far fa-folder"></i> ${post.category}</span> | 
+                    <span><i class="far fa-calendar-alt"></i> ${post.date}</span>
+                    <span><i class="far fa-folder"></i> ${post.category}</span>
                     <span><i class="far fa-user"></i> Hanatécia Contabilidade</span>
                 </div>
                 <div class="single-content">
                     ${post.fullContent}
-                    <hr style="margin: 40px 0 20px; border-color: var(--cinza-borda);">
+                    <hr>
                     <p style="font-size: 0.9rem; color: #666;"><i class="fas fa-share-alt"></i> Compartilhe este conteúdo com seus contatos. Para mais informações sobre nossos serviços, entre em contato com nossa equipe.</p>
                 </div>
             `;
@@ -705,9 +770,9 @@
         }
     }
 
+    // Menu mobile
     const menuToggle = document.getElementById('menuToggle');
     const navLinksMenu = document.getElementById('navLinks');
-
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             navLinksMenu.classList.toggle('active');
@@ -735,7 +800,6 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         renderList();
-        
         const backLink = document.getElementById('back-link');
         if (backLink) {
             backLink.addEventListener('click', (e) => {
